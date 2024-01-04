@@ -35,7 +35,9 @@ const OxygenPartialPressure = ({
   return (
     <>
       <S.VerticalTable>
-        <S.VerticalTableTitle>PPO2 at</S.VerticalTableTitle>
+        <S.VerticalTableTitle>
+          PPO2 (ATM) at depth (meters)
+        </S.VerticalTableTitle>
         {RenderedPP02Array}
       </S.VerticalTable>
       <PPO2graph PPO2DataSet={PPO2Data}></PPO2graph>

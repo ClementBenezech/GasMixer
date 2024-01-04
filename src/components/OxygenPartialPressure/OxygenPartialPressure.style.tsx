@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const VerticalTable = styled.div`
   display: flex;
   height: min-content;
-  width: min-content;
+  width: 80%;
   flex-direction: row;
   border-radius: 1vh;
   font-family: "Zen Dots";
@@ -12,7 +12,7 @@ export const VerticalTable = styled.div`
   position: relative;
   margin-top: 6vh;
   margin-right: 3.5;
-
+  justify-content: space-between;
   @media only screen and (max-width: 1024px) {
     width: 80vw;
     height: max-content;
@@ -60,7 +60,7 @@ export const TableCell = styled.div<{
   border: 5px solid white;
   border-radius: 2vh;
   box-sizing: border-box;
-  font-size: 0.8vw;
+  font-size: 1vw;
   white-space: nowrap;
   min-width: min-content;
   @media only screen and (max-width: 1024px) {
@@ -78,7 +78,7 @@ export const StandardTableCell = styled.div`
   border: 5px solid white;
   border-radius: 20%;
   box-sizing: border-box;
-  font-size: 70%;
+  font-size: 80%;
   white-space: nowrap;
   min-width: min-content;
 `;

@@ -46,12 +46,9 @@ export const TankOutline = styled.div`
   border-radius: 20% 20% 10% 10%;
   height: 40vh;
   width: 20vh;
-  border: 1vw solid white;
+  border: 0.5vw solid white;
   overflow: hidden;
-  background-color: white;
-  @media only screen and (max-width: 1024px) {
-    width: 30vw;
-  }
+  background-color: #9d9d9d;
 `;
 
 export const GasPercentageBar = styled.div<{
@@ -78,20 +75,24 @@ export const GasPercentageAmount = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Shrikhand";
+  font-family: "Zen Dots";
   @media only screen and (max-width: 1024px) {
     font-size: 3vh;
   }
 `;
 
 export const GasNamesContainer = styled.div`
-  margin-top: 6vh;
-  height: 100%;
+  margin-top: 5vh;
+  height: 75%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  position: relative;
+  left: -20vh;
+  bottom: -10vh;
+  z-index: 2;
   @media only screen and (max-width: 1024px) {
     width: 50vh;
     height: 100%;
@@ -105,9 +106,9 @@ export const GasName = styled.div<{ percentage?: number; gasColor: string }>`
   color: ${(props) => props.gasColor};
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  font-family: "Rubik Doodle Shadow";
-  font-size: 4vh;
+  justify-content: center;
+  font-family: "Zen Dots";
+  font-size: 3vh;
   white-space: nowrap;
   @media only screen and (max-width: 1024px) {
     font-size: 1.8vh;

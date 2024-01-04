@@ -14,10 +14,12 @@ const MODcomponent = ({ OxygenPercentage }: { OxygenPercentage: number }) => {
       <S.MODcard>
         <div>{` < 1.4`}</div>
         <div>{MOD_PPO2_1_4} m</div>
+        <S.MODdiveType>Recreational</S.MODdiveType>
       </S.MODcard>
       <S.MODcard>
         <div>{` < 1.6`}</div>
         <div>{MOD_PPO2_1_6} m</div>
+        <S.MODdiveType>Tech</S.MODdiveType>
       </S.MODcard>
       <S.MessageCard>
         At {MOD_PPO2_1_6} meters, with this mix, Oxygen partial pressure becomes

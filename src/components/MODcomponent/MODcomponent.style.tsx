@@ -8,13 +8,13 @@ export const ModContainer = styled.div`
   justify-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  font-family: "shrikhand";
+  font-family: "Zen Dots";
   font-size: 3vw;
-  border-radius: 2vw;
-  overflow: hidden;
+  border-radius: 0vw;
+  overflow: visible;
   color: black;
   margin-right: 2vw;
-  width: 70%;
+  width: 78%;
   align-items: center;
 
   @media only screen and (max-width: 1024px) {
@@ -25,11 +25,12 @@ export const ModContainer = styled.div`
 
 export const MODcard = styled.div`
   color: #474747;
-  font-size: 3vh;
+  position: relative;
+  font-size: 2vh;
   display: flex;
   align-items: center;
-  width: 32%;
-  gap: 3;
+  max-width: 30%;
+  gap: 1;
   padding: 1.5vh;
   background: orange;
   height: 100%;
@@ -41,8 +42,8 @@ export const MODcard = styled.div`
     width: 100%;
     background: white;
     white-space: nowrap;
-    padding: 1vh;
-    border-radius: 1vh;
+    padding: 0.3vw;
+    border-radius: 0vh;
     &:nth-child(odd) {
       background: orange;
       color: white;
@@ -56,14 +57,14 @@ export const MessageCard = styled.div`
   text-align: left;
   display: flex;
   align-items: flex-start;
-  width: 48%;
+  min-width: 20vw;
+  max-width: 20vw;
   gap: 4;
   padding: 1.5vh;
-  width: 50%;
   background: white;
   font-size: 1vw;
   height: 100%;
-  border-radius: 2vw;
+  border-radius: 0.5vw;
   position: relative;
   left: -0.3vw;
   & > div {
@@ -83,4 +84,18 @@ export const MODlabel = styled.div`
   white-space: break-spaces;
   width: 100%;
   background: red;
+`;
+
+export const MODdiveType = styled.div`
+  font-size: 0.9vw;
+  white-space: break-spaces;
+  min-width: min-content;
+  max-width: 8vw;
+  background: black !important;
+  position: absolute;
+  top: -3.5vh;
+  z-index: -1;
+  left: 0;
+  text-align: right;
+  box-sizing: border-box;
 `;
