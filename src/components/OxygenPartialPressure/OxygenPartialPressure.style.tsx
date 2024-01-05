@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const VerticalTable = styled.div`
   display: flex;
-  height: min-content;
-  width: 80%;
+  height: 5vw;
+  box-sizing: border-box;
+  width: 84%;
   flex-direction: row;
   border-radius: 1vh;
   font-family: "Zen Dots";
-  background-color: white;
-  padding: 1vw;
+  border: 1px solid white;
+  padding: 0.5vw;
   position: relative;
   margin-top: 6vh;
   margin-right: 3.5;
@@ -29,15 +30,15 @@ export const VerticalTableTitle = styled.div`
   left: 2vw;
   white-space: nowrap;
   background: orange;
-  border-radius: 1vh;
+  border-radius: 0.3vw;
   padding: 1vh;
 `;
 
 export const TableRow = styled.div`
   display: flex;
-  height: 5vh;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: black;
   width: 3vw;
   z-index: 2;
@@ -57,12 +58,13 @@ export const TableCell = styled.div<{
   width: 45%;
   height: 50%;
   align-items: center;
-  border: 5px solid white;
-  border-radius: 2vh;
+  border-radius: 0.3vw;
   box-sizing: border-box;
-  font-size: 1vw;
+  font-size: 0.9vw;
   white-space: nowrap;
-  min-width: min-content;
+  min-width: 3vw;
+  padding: 4px;
+  background: #000000;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
   }
@@ -71,11 +73,10 @@ export const TableCell = styled.div<{
 export const StandardTableCell = styled.div`
   display: flex;
   justify-content: center;
-  color: #08a0ff;
+  color: #ffffff;
   width: 45%;
   height: 50%;
   align-items: center;
-  border: 5px solid white;
   border-radius: 20%;
   box-sizing: border-box;
   font-size: 80%;

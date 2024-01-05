@@ -30,6 +30,7 @@ export const MODcard = styled.div`
   display: flex;
   align-items: center;
   max-width: 30%;
+  min-width: 25%;
   gap: 1;
   padding: 1.5vh;
   background: orange;
@@ -80,7 +81,7 @@ export const MessageCard = styled.div`
 `;
 
 export const MODlabel = styled.div`
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   white-space: break-spaces;
   width: 100%;
   background: red;

@@ -19,9 +19,13 @@ const ChartContainer = styled.div`
   padding-left: 1vw;
   padding-top: 1vw;
   border: 1px solid white;
-  border-radius: 1vw;
+  border-radius: 0.5vw;
   margin-top: 1vw;
   margin-bottom: 1vw;
+  font-family: "Zen Dots";
+  & > * {
+    font-family: "Zen Dots";
+  }
 `;
 
 export type DataPoint = {
@@ -52,7 +56,6 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
       >
         <AnimatedAxis
           orientation="top"
-          stroke="red"
           labelProps={{
             fill: "orange",
             fontWeight: "bold",
@@ -68,7 +71,6 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
         <AnimatedAxis
           orientation="left"
           tickStroke="blue"
-          stroke="orange"
           labelProps={{
             fill: "orange",
             fontWeight: "bold",
@@ -81,12 +83,37 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
           labelOffset={32}
         />
         <AnimatedGrid columns={false} numTicks={10} />
+
         <AnimatedLineSeries
           dataKey="PPO2@depth"
           data={PPO2DataSet}
           stroke="limegreen"
           {...accessors}
         ></AnimatedLineSeries>
+        <Annotation
+          dataKey="PPO2@depth"
+          datum={{
+            x: Math.max(ScalesMaxValues.x / 1.5, 0.8),
+            y: 50,
+          }}
+          dx={0}
+          dy={0}
+          {...accessors}
+        >
+          <AnnotationLabel
+            title="PPO2"
+            subtitle={``}
+            showAnchorLine={false}
+            anchorLineStroke="white"
+            backgroundFill="transparent"
+            titleProps={{
+              fontFamily: "Zen Dots",
+              fill: "#ffffff",
+              textAnchor: "middle",
+            }}
+          />
+          <AnnotationConnector stroke="white" />
+        </Annotation>
 
         {MOD_PPO2_1_6 < 100 && (
           <>
@@ -98,8 +125,7 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
                 { x: 11, y: ScalesMaxValues.y },
                 { x: 0, y: ScalesMaxValues.y },
               ]}
-              fill="#be0000d5"
-              color="pink"
+              fill="#e8000070"
               name="DEATH ZONE"
               lineProps={{
                 stroke: "white",
@@ -110,21 +136,29 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
             <Annotation
               dataKey="PPO2@depth"
               datum={{
-                x: 1.6, // x offset of label from subject
+                x: 1.6,
                 y: MOD_PPO2_1_6,
               }}
-              dx={50}
-              dy={50}
+              dx={100}
+              dy={-50}
               {...accessors}
             >
               <AnnotationLabel
-                title={`PPO2 is too high to breath from ${MOD_PPO2_1_6} meters!`}
-                subtitle=""
-                showAnchorLine={true}
-                backgroundFill="#fffefd"
+                title={`PPO2 is too high to breath below ${MOD_PPO2_1_6} meters!`}
+                subtitle={``}
+                showAnchorLine={false}
+                backgroundFill="white"
+                anchorLineStroke="white"
+                titleProps={{
+                  fontFamily: "Zen Dots",
+                  fill: "#000000",
+                  textAnchor: "start",
+                  opacity: 1,
+                  width: 180,
+                }}
               />
-              <AnnotationCircleSubject stroke="white" />
               {/** Connect label to CircleSubject */}
+              <AnnotationCircleSubject stroke="white" />
               <AnnotationConnector stroke="white" />
             </Annotation>
           </>
@@ -140,8 +174,7 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
                 { x: 11, y: 0 },
                 { x: 0, y: 0 },
               ]}
-              fill="#be0000d5"
-              color="pink"
+              fill="#e8000070"
               name="DEATH ZONE"
               lineProps={{
                 stroke: "white",
@@ -155,8 +188,8 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
                 x: 0.18, // x offset of label from subject
                 y: MOD_PPO2_0_18,
               }}
-              dx={70}
-              dy={70}
+              dx={100}
+              dy={50}
               {...accessors}
             >
               <AnnotationLabel
@@ -181,12 +214,12 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
           showSeriesGlyphs
           renderTooltip={({ tooltipData, colorScale }) => (
             <div>
-              <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
-                {tooltipData.nearestDatum.key}
-              </div>
+              {"PPO2 is "}
               {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              {", "}
+              {" ATM "}
+              {"at "}
               {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+              {" meters"}
             </div>
           )}
         />
