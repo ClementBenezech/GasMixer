@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  height: min-content;
+  height: 4vw;
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -13,10 +13,14 @@ export const ModContainer = styled.div`
   border-radius: 0vw;
   overflow: visible;
   color: black;
-  margin-right: 2vw;
-  width: 78%;
+  width: 75%;
+  overflow: visible;
+  box-sizing: border-box;
   align-items: center;
-
+  border: 1px solid white;
+  border-radius: 0.3vw;
+  margin-top: 1.5vw;
+  margin-bottom: 0.5vw;
   @media only screen and (max-width: 1024px) {
     flex-wrap: wrap;
     gap: 5vh;
@@ -24,50 +28,48 @@ export const ModContainer = styled.div`
 `;
 
 export const MODcard = styled.div`
-  color: #474747;
+  color: #dcdcdc;
   position: relative;
-  font-size: 2vh;
+  font-size: 0.8vw;
+  justify-content: space-between;
+  padding: 0 1vw;
   display: flex;
   align-items: center;
-  max-width: 30%;
-  min-width: 25%;
-  gap: 1;
-  padding: 1.5vh;
-  background: orange;
+  max-width: 15%;
+  min-width: 15%;
+  box-sizing: border-box;
   height: 100%;
-  &:nth-child(1) {
-    background: white;
-  }
+  position: relative;
+`;
 
-  & > div {
-    width: 100%;
-    background: white;
-    white-space: nowrap;
-    padding: 0.3vw;
-    border-radius: 0vh;
-    &:nth-child(odd) {
-      background: orange;
-      color: white;
-    }
-  }
+export const MODValue = styled.div<{
+  background: string;
+}>`
+  height: 3vw;
+  width: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${(props) => props.background};
+  border-radius: 50%;
+  & :nth-child(1) {
+    background: #e43900;
+  }s
 `;
 
 export const MessageCard = styled.div`
-  color: #474747;
-  font-size: 2.5vh;
+  color: #ffffff;
+  font-size: 1vw;
   text-align: left;
   display: flex;
-  align-items: flex-start;
-  min-width: 20vw;
-  max-width: 20vw;
-  gap: 4;
-  padding: 1.5vh;
-  background: white;
+  align-items: center;
+  min-width: 40%;
+  max-width: 90%;
+  padding: 0.1vw 1vw;
   font-size: 1vw;
   height: 100%;
-  border-radius: 0.5vw;
   position: relative;
-  left: -0.3vw;
+  box-sizing: border-box;
   & > div {
     width: 100%;
     background: white;
@@ -84,7 +86,11 @@ export const MODlabel = styled.div`
   font-size: 0.8vw;
   white-space: break-spaces;
   width: 100%;
-  background: red;
+  height: 100%;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
 `;
 
 export const MODdiveType = styled.div`
@@ -94,9 +100,11 @@ export const MODdiveType = styled.div`
   max-width: 8vw;
   background: black !important;
   position: absolute;
-  top: -3.5vh;
-  z-index: -1;
-  left: 0;
+  top: -1vw;
+  z-index: 1;
+  left: 0.6vw;
   text-align: right;
   box-sizing: border-box;
+  padding: 0.2vw;
+  border-radius: 0.2vw;
 `;

@@ -2,13 +2,9 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
-  width: min-content;
-  justify-content: space-evenly;
-  margin-right: 2vw;
-  margin-left: 2vw;
+  justify-content: center;
+  width: 100%;
   @media only screen and (max-width: 1024px) {
-    width: 65vw;
-    height: 100%;
   }
 `;
 
@@ -16,22 +12,21 @@ export const TankContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-right: 0.5vw;
   height: 100%;
+  width: 100%;
 `;
 
 export const ValveOutline = styled.div`
-  height: 50px;
-  width: 40px;
+  height: 2vw;
+  width: 1.5vw;
   border: 6px solid white;
   border-radius: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   @media only screen and (max-width: 1024px) {
-    height: 2vw;
-    width: 2vw;
-    border: 1vw solid white;
   }
 `;
 
@@ -44,11 +39,16 @@ export const ORing = styled.div`
 
 export const TankOutline = styled.div`
   border-radius: 20% 20% 10% 10%;
-  height: 40vh;
-  width: 20vh;
+  height: 45vh;
+  width: 100%;
   border: 0.5vw solid white;
-  overflow: hidden;
   background-color: #9d9d9d;
+  box-sizing: border-box;
+  overflow: hidden;
+  @media only screen and (max-width: 1024px) {
+    height: 15vh;
+    width: 30vw;
+  }
 `;
 
 export const GasPercentageBar = styled.div<{
@@ -74,32 +74,14 @@ export const GasPercentageAmount = styled.div`
   font-size: 4vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   font-family: "Zen Dots";
   @media only screen and (max-width: 1024px) {
-    font-size: 3vh;
   }
 `;
 
-export const GasNamesContainer = styled.div`
-  margin-top: 5vh;
-  height: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
-  left: -20vh;
-  bottom: -10vh;
-  z-index: 2;
-  @media only screen and (max-width: 1024px) {
-    width: 50vh;
-    height: 100%;
-  }
-`;
-
-export const GasName = styled.div<{ percentage?: number; gasColor: string }>`
+export const GasName = styled.div<{ percentage?: number; gasColor?: string }>`
   width: 100%;
   box-sizing: border-box;
   height: ${(props) => props.percentage}%;
@@ -108,9 +90,13 @@ export const GasName = styled.div<{ percentage?: number; gasColor: string }>`
   align-items: center;
   justify-content: center;
   font-family: "Zen Dots";
-  font-size: 3vh;
+  font-size: 1.5vw;
   white-space: nowrap;
+  display: none;
+  & > * {
+    background: black;
+    border-radius: 1vw;
+  }
   @media only screen and (max-width: 1024px) {
-    font-size: 1.8vh;
   }
 `;

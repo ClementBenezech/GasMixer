@@ -3,19 +3,15 @@ import * as S from "./DiveTank.style";
 import { DiveTankProps } from "./types";
 
 const DiveTank = ({ gases }: DiveTankProps) => {
+  console.log(gases);
   const TankGases = gases.map((gas) => {
     return gas.percentage > 0 ? (
       <S.GasPercentageBar percentage={gas.percentage} gasColor={gas.color}>
-        <S.GasPercentageAmount>{`${gas.percentage}%`}</S.GasPercentageAmount>
+        <S.GasPercentageAmount>
+          <div>{`${gas.percentage}%`}</div>
+          <S.GasName>{gas.name}</S.GasName>
+        </S.GasPercentageAmount>
       </S.GasPercentageBar>
-    ) : null;
-  });
-
-  const GasNames = gases.map((gas) => {
-    return gas.percentage > 0 ? (
-      <S.GasName percentage={gas.percentage} gasColor={gas.color}>
-        {gas.name}
-      </S.GasName>
     ) : null;
   });
 
@@ -27,7 +23,6 @@ const DiveTank = ({ gases }: DiveTankProps) => {
         </S.ValveOutline>
         <S.TankOutline>{TankGases}</S.TankOutline>
       </S.TankContainer>
-      <S.GasNamesContainer>{GasNames}</S.GasNamesContainer>
     </S.MainContainer>
   );
 };

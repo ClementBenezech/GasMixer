@@ -15,7 +15,8 @@ import { getMODforTargetPPO2 } from "../utils/functions";
 import styled from "styled-components";
 
 const ChartContainer = styled.div`
-  width: 83%;
+  width: 85%;
+  box-sizing: border-box;
   padding-left: 1vw;
   padding-top: 1vw;
   border: 1px solid white;
@@ -42,10 +43,8 @@ const accessors = {
 
 const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
   const ScalesMaxValues = PPO2DataSet[PPO2DataSet.length - 1];
-  const MOD_PPO2_1_6 = getMODforTargetPPO2(1.6, PPO2DataSet[0].x * 100);
+  const MOD_PPO2_1_4 = getMODforTargetPPO2(1.4, PPO2DataSet[0].x * 100);
   const MOD_PPO2_0_18 = getMODforTargetPPO2(0.18, PPO2DataSet[0].x * 100);
-  console.log(PPO2DataSet[0].x * 100);
-  console.log(MOD_PPO2_1_6);
 
   return (
     <ChartContainer>
@@ -115,13 +114,13 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
           <AnnotationConnector stroke="white" />
         </Annotation>
 
-        {MOD_PPO2_1_6 < 100 && (
+        {MOD_PPO2_1_4 < 100 && (
           <>
             <AnimatedAreaSeries
               dataKey="Danger Zone"
               data={[
-                { x: 0, y: MOD_PPO2_1_6 },
-                { x: 11, y: MOD_PPO2_1_6 },
+                { x: 0, y: MOD_PPO2_1_4 },
+                { x: 11, y: MOD_PPO2_1_4 },
                 { x: 11, y: ScalesMaxValues.y },
                 { x: 0, y: ScalesMaxValues.y },
               ]}
@@ -137,14 +136,14 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
               dataKey="PPO2@depth"
               datum={{
                 x: 1.6,
-                y: MOD_PPO2_1_6,
+                y: MOD_PPO2_1_4,
               }}
               dx={100}
               dy={-50}
               {...accessors}
             >
               <AnnotationLabel
-                title={`PPO2 is too high to breath below ${MOD_PPO2_1_6} meters!`}
+                title={`PPO2 is too high to breath below ${MOD_PPO2_1_4} meters!`}
                 subtitle={``}
                 showAnchorLine={false}
                 backgroundFill="white"
@@ -215,10 +214,10 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
           renderTooltip={({ tooltipData, colorScale }) => (
             <div>
               {"PPO2 is "}
-              {accessors.xAccessor(tooltipData.nearestDatum.datum)}
+              {accessors.xAccessor(tooltipData.nearestDatum.datum ?? 0)}
               {" ATM "}
               {"at "}
-              {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+              {accessors.yAccessor(tooltipData.nearestDatum.datum ?? 0)}
               {" meters"}
             </div>
           )}

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const VerticalTable = styled.div`
   display: flex;
-  height: 5vw;
+  height: 7vw;
   box-sizing: border-box;
-  width: 84%;
+  width: 75%;
   flex-direction: row;
-  border-radius: 1vh;
+  border-radius: 0.2vw;
   font-family: "Zen Dots";
   border: 1px solid white;
   padding: 0.5vw;
@@ -38,10 +38,12 @@ export const TableRow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   color: black;
-  width: 3vw;
+  width: 8vw;
   z-index: 2;
+  gap: 2%;
+  height: 100%;
 
   @media only screen and (max-width: 1024px) {
     height: 3vh;
@@ -52,19 +54,19 @@ export const TableCell = styled.div<{
   color?: string;
 }>`
   color: ${(props) => props.color ?? "white"};
-  border: 1px solid ${(props) => props.color ?? "white"};
+  //border: 1px solid ${(props) => props.color ?? "white"};
   display: flex;
   justify-content: center;
   width: 45%;
-  height: 50%;
+  height: 30%;
   align-items: center;
   border-radius: 0.3vw;
   box-sizing: border-box;
   font-size: 0.9vw;
   white-space: nowrap;
   min-width: 3vw;
-  padding: 4px;
-  background: #000000;
+  padding: 2px;
+  background: #00000048;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
   }
@@ -75,7 +77,43 @@ export const StandardTableCell = styled.div`
   justify-content: center;
   color: #ffffff;
   width: 45%;
-  height: 50%;
+  align-items: center;
+  border-radius: 20%;
+  box-sizing: border-box;
+  font-size: 80%;
+  white-space: nowrap;
+  min-width: min-content;
+`;
+
+export const TitleTableRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #ffffff;
+  width: 10%;
+  height: 100%;
+  align-items: center;
+  border-radius: 20%;
+  box-sizing: border-box;
+  font-size: 80%;
+  white-space: nowrap;
+  min-width: min-content;
+`;
+
+export const DiveTankAndGraphContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  color: #ffffff;
+  width: 88.2%;
+  box-sizing: border-box;
+`;
+
+export const DiveTankContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  width: 10%;
   align-items: center;
   border-radius: 20%;
   box-sizing: border-box;

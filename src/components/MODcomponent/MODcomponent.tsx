@@ -8,18 +8,17 @@ const MODcomponent = ({ OxygenPercentage }: { OxygenPercentage: number }) => {
   return (
     <S.ModContainer>
       <S.MODcard>
-        <div>Target PPO2</div>
         <S.MODlabel>Max.operating depth</S.MODlabel>
       </S.MODcard>
       <S.MODcard>
-        <div>{` < 1.4`}</div>
-        <div>{MOD_PPO2_1_4} m</div>
-        <S.MODdiveType>Recreational</S.MODdiveType>
+        <div>{` PP02 < 1.4`}</div>
+        <S.MODValue background="orange">{MOD_PPO2_1_4} m</S.MODValue>
+        <S.MODdiveType>Active phase</S.MODdiveType>
       </S.MODcard>
       <S.MODcard>
-        <div>{` < 1.6`}</div>
-        <div>{MOD_PPO2_1_6} m</div>
-        <S.MODdiveType>Tech</S.MODdiveType>
+        <div>{` PPO2 < 1.6`}</div>
+        <S.MODValue background="#ba0000">{MOD_PPO2_1_6} m</S.MODValue>
+        <S.MODdiveType>Deco Stops</S.MODdiveType>
       </S.MODcard>
       <S.MessageCard>
         At {MOD_PPO2_1_6} meters, with this mix, Oxygen partial pressure becomes
