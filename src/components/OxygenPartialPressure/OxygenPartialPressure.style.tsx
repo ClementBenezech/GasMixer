@@ -15,23 +15,12 @@ export const VerticalTable = styled.div`
   margin-right: 3.5;
   justify-content: space-between;
   @media only screen and (max-width: 1024px) {
-    width: 80vw;
-    height: max-content;
+    width: 96vw;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5vh;
   }
-`;
-
-export const VerticalTableTitle = styled.div`
-  display: flex;
-  width: min-content;
-  color: white;
-  flex-direction: column;
-  position: absolute;
-  top: -5vh;
-  left: 2vw;
-  white-space: nowrap;
-  background: orange;
-  border-radius: 0.3vw;
-  padding: 1vh;
 `;
 
 export const TableRow = styled.div`
@@ -46,7 +35,7 @@ export const TableRow = styled.div`
   height: 100%;
 
   @media only screen and (max-width: 1024px) {
-    height: 3vh;
+    height: 8vh;
   }
 `;
 
@@ -68,7 +57,9 @@ export const TableCell = styled.div<{
   padding: 2px;
   background: #00000048;
   @media only screen and (max-width: 1024px) {
-    font-size: 2vh;
+    font-size: 1.3vh;
+    background: white;
+    min-width: 90%;
   }
 `;
 
@@ -83,6 +74,9 @@ export const StandardTableCell = styled.div`
   font-size: 80%;
   white-space: nowrap;
   min-width: min-content;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.3vh;
+  }
 `;
 
 export const TitleTableRow = styled.div`
@@ -99,6 +93,11 @@ export const TitleTableRow = styled.div`
   font-size: 80%;
   white-space: nowrap;
   min-width: min-content;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1vh;
+    width: 8%;
+    flex-wrap: nowrap;
+  }
 `;
 
 export const DiveTankAndGraphContainer = styled.div`
@@ -107,6 +106,9 @@ export const DiveTankAndGraphContainer = styled.div`
   color: #ffffff;
   width: 88.2%;
   box-sizing: border-box;
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const DiveTankContainer = styled.div`

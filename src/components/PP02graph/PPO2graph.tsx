@@ -27,6 +27,12 @@ const ChartContainer = styled.div`
   & > * {
     font-family: "Zen Dots";
   }
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+  }
 `;
 
 export type DataPoint = {
@@ -49,7 +55,7 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
   return (
     <ChartContainer>
       <XYChart
-        height={360}
+        height={340}
         xScale={{ type: "linear", domain: [0, 11] }}
         yScale={{ type: "linear", domain: [ScalesMaxValues.y, 0] }}
       >
@@ -61,10 +67,9 @@ const PPO2graph = ({ PPO2DataSet }: PPO2chartData) => {
           }}
           tickLabelProps={{
             fill: "white",
-            fontWeight: "bold",
           }}
           label="Partial pressure (ATM)"
-          labelOffset={16}
+          labelOffset={10}
           hideZero
         />
         <AnimatedAxis

@@ -4,8 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  @media only screen and (max-width: 1024px) {
-  }
+  height: 100%;
 `;
 
 export const TankContainer = styled.div`
@@ -16,6 +15,8 @@ export const TankContainer = styled.div`
   margin-right: 0.5vw;
   height: 100%;
   width: 100%;
+  @media only screen and (max-width: 1024px) {
+  }
 `;
 
 export const ValveOutline = styled.div`
@@ -27,6 +28,7 @@ export const ValveOutline = styled.div`
   justify-content: center;
   align-items: center;
   @media only screen and (max-width: 1024px) {
+    border: 2px solid white;
   }
 `;
 
@@ -35,6 +37,10 @@ export const ORing = styled.div`
   width: 1vh;
   border: 2px solid silver;
   border-radius: 50%;
+  @media only screen and (max-width: 1024px) {
+    height: 0.5vh;
+    width: 0.5vh;
+  }
 `;
 
 export const TankOutline = styled.div`
@@ -46,8 +52,8 @@ export const TankOutline = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   @media only screen and (max-width: 1024px) {
-    height: 15vh;
-    width: 30vw;
+    height: 45vw;
+    width: 15vw;
   }
 `;
 
@@ -78,6 +84,7 @@ export const GasPercentageAmount = styled.div`
   align-items: center;
   font-family: "Zen Dots";
   @media only screen and (max-width: 1024px) {
+    font-size: 2vh;
   }
 `;
 
@@ -98,5 +105,6 @@ export const GasName = styled.div<{ percentage?: number; gasColor?: string }>`
     border-radius: 1vw;
   }
   @media only screen and (max-width: 1024px) {
+    font-size: 3vw;
   }
 `;

@@ -69,7 +69,7 @@ const OxygenPartialPressure = ({
       <S.VerticalTable>
         <S.TitleTableRow>
           <S.StandardTableCell>DEPTH</S.StandardTableCell>
-          <S.StandardTableCell>Equivalent Narcotic Depth</S.StandardTableCell>
+          <S.StandardTableCell>END</S.StandardTableCell>
           <S.StandardTableCell>PPO2</S.StandardTableCell>
         </S.TitleTableRow>
         {RenderedPP02Array}

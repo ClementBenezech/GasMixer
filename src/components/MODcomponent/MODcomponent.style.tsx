@@ -22,8 +22,11 @@ export const ModContainer = styled.div`
   margin-top: 1.5vw;
   margin-bottom: 0.5vw;
   @media only screen and (max-width: 1024px) {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 5vh;
+
+    height: 10vh;
+    width: 96vw;
   }
 `;
 
@@ -40,6 +43,11 @@ export const MODcard = styled.div`
   box-sizing: border-box;
   height: 100%;
   position: relative;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.5vh;
+    min-width: 35%;
+    max-width: 35%;
+  }
 `;
 
 export const MODValue = styled.div<{
@@ -54,7 +62,13 @@ export const MODValue = styled.div<{
   border-radius: 50%;
   & :nth-child(1) {
     background: #e43900;
-  }s
+    height: 3vh;
+  }
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.5vh;
+    height: 5vh;
+    width: 5vh;
+  }
 `;
 
 export const MessageCard = styled.div`
@@ -80,6 +94,9 @@ export const MessageCard = styled.div`
       color: white;
     }
   }
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const MODlabel = styled.div`
@@ -91,6 +108,28 @@ export const MODlabel = styled.div`
   color: #ffffff;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 1024px) {
+    font-size: 2vh;
+  }
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const MobileMODlabel = styled.div`
+  font-size: 2vh;
+  white-space: break-spaces;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 1024px) {
+    display: flex;
+  }
 `;
 
 export const MODdiveType = styled.div`
@@ -107,4 +146,9 @@ export const MODdiveType = styled.div`
   box-sizing: border-box;
   padding: 0.2vw;
   border-radius: 0.2vw;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.3vh;
+    white-space: nowrap;
+    top: 6px;
+  }
 `;

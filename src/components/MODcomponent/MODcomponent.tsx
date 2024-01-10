@@ -7,9 +7,8 @@ const MODcomponent = ({ OxygenPercentage }: { OxygenPercentage: number }) => {
 
   return (
     <S.ModContainer>
-      <S.MODcard>
-        <S.MODlabel>Max.operating depth</S.MODlabel>
-      </S.MODcard>
+      <S.MODlabel>Max.operating depth</S.MODlabel>
+      <S.MobileMODlabel>MOD</S.MobileMODlabel>
       <S.MODcard>
         <div>{` PP02 < 1.4`}</div>
         <S.MODValue background="orange">{MOD_PPO2_1_4} m</S.MODValue>
