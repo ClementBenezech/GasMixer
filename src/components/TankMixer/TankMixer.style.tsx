@@ -59,8 +59,11 @@ export const SlidersContainer = styled.div`
 
   padding: 1vw;
   @media only screen and (max-width: 1024px) {
-    width: 40vw;
+    width: 70vw;
     height: 100%;
+    & input {
+      width: 100%;
+    }
   }
 `;
 
