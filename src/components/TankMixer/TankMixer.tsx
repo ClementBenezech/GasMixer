@@ -62,13 +62,12 @@ const TankMixer = () => {
 
             <S.GasMixerSlider {...heliumSliderState} />
           </S.SlidersContainer>
-          <DiveTank gases={TankGases} />
+          <S.DiveTankContainer>
+            <DiveTank gases={TankGases} />
+          </S.DiveTankContainer>
         </S.TankAndSliderContainer>
       </S.TankMixerContainer>
-      <OxygenPartialPressure
-        oxygenPercentage={gasPercentages[0]}
-        tankGases={TankGases}
-      />
+      <OxygenPartialPressure tankGases={TankGases} />
     </S.GlobalContainer>
   );
 };

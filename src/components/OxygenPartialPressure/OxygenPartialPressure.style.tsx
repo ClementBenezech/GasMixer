@@ -6,7 +6,7 @@ export const PPO2ENDTable = styled.div`
   width: 75%;
   flex-direction: row;
   border-radius: 0.2vw;
-  font-family: "Zen Dots";
+  font-family: "Roboto";
 
   padding: 1vh;
   position: relative;
@@ -29,11 +29,11 @@ export const TableRow = styled.div`
   align-items: center;
   justify-content: flex-start;
   color: black;
-  width: 23%;
+  width: 32%;
   z-index: 2;
   gap: 0;
   height: 100%;
-  background: white;
+  background: #d2d2d2;
   border-radius: 0.7vh;
   overflow: hidden;
 
@@ -65,10 +65,17 @@ export const TableCell = styled.div<{
   }
   & > div {
     padding-left: 1vh;
+    font-size: 2vh;
+    width: 100%;
+    background: white;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
   }
+
   @media only screen and (max-width: 1024px) {
     font-size: 1.8vh;
-    background: white;
+    background: #d2d2d2;
     min-width: 90%;
   }
 `;
@@ -90,21 +97,20 @@ export const StandardTableCell = styled.div<{
   font-size: 3vh;
 
   & > i {
-    width: 30%;
+    width: 25%;
     padding: 0.5vh;
     box-sizing: border-box;
   }
   & > div {
     padding-left: 1vh;
+    font-size: 2vh;
+    font-weight: bold;
   }
+
   @media only screen and (max-width: 1024px) {
-    font-size: 1.8vh;
+    font-size: 2vh;
 
     min-width: 90%;
-  }
-
-  @media only screen and (max-width: 1024px) {
-    font-size: 1.8vh;
   }
 `;
 
@@ -131,7 +137,7 @@ export const TitleTableRow = styled.div`
 
 export const DiveTankAndGraphContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   color: #ffffff;
   width: 88.2%;
   box-sizing: border-box;

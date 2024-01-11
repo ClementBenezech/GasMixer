@@ -82,7 +82,7 @@ export const GasPercentageAmount = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: "Zen Dots";
+  font-family: "Roboto";
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
   }

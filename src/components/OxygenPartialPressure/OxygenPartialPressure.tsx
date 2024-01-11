@@ -1,4 +1,3 @@
-import MODcomponent from "../MODcomponent/MODcomponent";
 import SimpleBarGraph from "../SimpleBarGraph/SimpleBarGraph";
 
 import {
@@ -15,12 +14,11 @@ import {
   getMODforTargetPPO2,
 } from "../utils/functions";
 import * as S from "./OxygenPartialPressure.style";
+import { getNarcosisZones, getPPO2ZOnes } from "./functions";
 
 const OxygenPartialPressure = ({
-  oxygenPercentage,
   tankGases,
 }: {
-  oxygenPercentage: number;
   tankGases: { percentage: number; color: string; name: string }[];
 }) => {
   const depthArray = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
@@ -31,18 +29,38 @@ const OxygenPartialPressure = ({
   const ArrowDownIcon = <i className="fa-solid fa-arrow-down"></i>;
   const DeathIcon = <i className="fa-solid fa-ghost"></i>;
   const WarningIcon = <i className="fa-solid fa-triangle-exclamation"></i>;
-  const ValidIcon = <i class="fa-solid fa-circle-check"></i>;
+  const ValidIcon = <i className="fa-solid fa-circle-check"></i>;
+
+  const shallowestSafeOperatingDepth = Math.max(
+    getMODforTargetPPO2(0.18, tankGases[1].percentage),
+    0
+  );
+
+  const deepestSafeOperatingDepth = getMODforTargetPPO2(
+    1.4,
+    tankGases[1].percentage
+  );
+
+  const PPO2zones = getPPO2ZOnes(
+    shallowestSafeOperatingDepth,
+    deepestSafeOperatingDepth
+  );
+
+  const maxNarcosisDepth = Math.round(
+    getDepthForEquivalentNarcosisDepth(40, currentGasNitrogenPercentage)
+  );
+
+  const NarcosisZones = getNarcosisZones(
+    currentGasNitrogenPercentage,
+    maxNarcosisDepth
+  );
+
+  const NARCOTIC_DEPTH_TARGET = 40;
 
   const PPO2Data = [];
   const RenderedPP02Array = depthArray.map((depth) => {
     const oxygenPartialPressure =
       Math.round(tankGases[1].percentage * (depth / 10 + 1)) / 100;
-
-    const isPartialPressureSafe =
-      oxygenPartialPressure >= minSafePPO2 &&
-      oxygenPartialPressure <= maxSafePPO2;
-
-    const NARCOTIC_DEPTH_TARGET = 40;
 
     PPO2Data.push({ x: oxygenPartialPressure, y: depth });
 
@@ -50,12 +68,17 @@ const OxygenPartialPressure = ({
       depth,
       currentGasNitrogenPercentage
     );
-    const isDepthNarcotic = equivalentNarcoticDepth > NARCOTIC_DEPTH_TARGET;
 
+    //Assessing if gas is safe
+    const isPartialPressureSafe =
+      oxygenPartialPressure >= minSafePPO2 &&
+      oxygenPartialPressure <= maxSafePPO2;
+    const isDepthNarcotic = equivalentNarcoticDepth > NARCOTIC_DEPTH_TARGET;
+    const isGasMixSafe = !isDepthNarcotic && isPartialPressureSafe;
+
+    //Defining appropriate color
     const PPN2Color = isDepthNarcotic ? dangerColor : nitrogenColor;
     const PPO2Color = isPartialPressureSafe ? oxygenColor : dangerColor;
-
-    const isGasMixSafe = !isDepthNarcotic && isPartialPressureSafe;
 
     return (
       <S.TableRow>
@@ -75,59 +98,6 @@ const OxygenPartialPressure = ({
     );
   });
 
-  const shallowestSafeOperatingDepth = Math.max(
-    getMODforTargetPPO2(0.18, tankGases[1].percentage),
-    0
-  );
-
-  const deepestSafeOperatingDepth = getMODforTargetPPO2(
-    1.4,
-    tankGases[1].percentage
-  );
-  const PPO2zones = [
-    {
-      start: 0,
-      end: shallowestSafeOperatingDepth,
-      color: "linear-gradient(180deg, #6f00ff 70%, #e1e1e1 100%)",
-      danger: true,
-    },
-    {
-      start: shallowestSafeOperatingDepth,
-      end: deepestSafeOperatingDepth,
-      color: "linear-gradient(180deg, #a2ff8f 80%, #e1e1e1 100%)",
-    },
-    {
-      start: deepestSafeOperatingDepth,
-      end: 300,
-      color: "linear-gradient(180deg, #ff6e6e 70% 70%, #e1e1e1 100%)",
-      danger: true,
-    },
-  ];
-
-  const maxNarcosisDepth = Math.round(
-    getDepthForEquivalentNarcosisDepth(40, currentGasNitrogenPercentage)
-  );
-
-  const NarcosisZones = [
-    {
-      start: 0,
-      end:
-        currentGasNitrogenPercentage > 0 && maxNarcosisDepth < 300
-          ? maxNarcosisDepth
-          : 300,
-      color: "linear-gradient(180deg, #a2ff8f 80%, #e1e1e1 100%)",
-    },
-    {
-      start:
-        currentGasNitrogenPercentage > 0 && maxNarcosisDepth < 300
-          ? maxNarcosisDepth
-          : 300,
-      end: 300,
-      color: "linear-gradient(180deg, #ff6e6e 70%, #e1e1e1 100%)",
-      danger: true,
-    },
-  ];
-
   return (
     <>
       <S.DiveTankAndGraphContainer>
@@ -139,22 +109,22 @@ const OxygenPartialPressure = ({
         />
         <SimpleBarGraph
           zones={NarcosisZones}
-          title="Nitrogen Narcosis"
+          title={`Narcosis with E.N.D = ${NARCOTIC_DEPTH_TARGET} m`}
           dangerIcon={NarcosisIcon}
         />
       </S.DiveTankAndGraphContainer>
       <S.PPO2ENDTable>
         <S.TableRow>
-          <S.StandardTableCell color="black">
-            <i className="fa-solid fa-arrow-down"></i>
+          <S.StandardTableCell color="blue">
+            {ArrowDownIcon}
             <div>DEPTH</div>
           </S.StandardTableCell>
           <S.TableCell color={nitrogenColor}>
-            <i className="fa-solid fa-bullseye"></i>
+            {NarcosisIcon}
             <div>E.N.D</div>
           </S.TableCell>
           <S.TableCell color={oxygenColor}>
-            <i className="fa-solid fa-biohazard"></i>
+            {ToxicityIcon}
             <div>PPO2</div>
           </S.TableCell>
         </S.TableRow>

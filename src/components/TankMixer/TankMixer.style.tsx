@@ -41,10 +41,11 @@ export const TankAndSliderContainer = styled.div`
     position: relative;
     height: 20vh;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -56,11 +57,10 @@ export const SlidersContainer = styled.div`
   justify-content: space-evenly;
   width: 10vw;
   font-size: 1.2vw;
-
   padding: 1vw;
   @media only screen and (max-width: 1024px) {
     width: 70vw;
-    height: 100%;
+    height: 16vh;
     & input {
       width: 100%;
     }
@@ -68,12 +68,50 @@ export const SlidersContainer = styled.div`
 `;
 
 export const SliderName = styled.div`
-  font-size: 1.2vw;
+  font-size: 2vh;
   padding: 1vw;
   @media only screen and (max-width: 1024px) {
-    font-size: 1.5vh;
-    padding: 1vh;
+    font-size: 2vh;
+    padding: 0.2vh;
+    width: 100%;
+    text-align: left;
   }
 `;
 
-export const GasMixerSlider = styled.input``;
+export const DiveTankContainer = styled.div`
+  width: 100%;
+  @media only screen and (max-width: 1024px) {
+    width: 20%;
+    height: 100%;
+  }
+`;
+export const GasMixerSlider = styled.input`
+  -webkit-appearance: none;
+  background: transparent;
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2vh;
+    background: #ffffff;
+    border: 1px solid white;
+    border-radius: 2vh;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 50%;
+    background: #11a8ff;
+    margin-top: -1vh;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+  }
+`;
