@@ -3,16 +3,15 @@ import styled from "styled-components";
 export const PPO2ENDTable = styled.div`
   display: flex;
   box-sizing: border-box;
-  width: 75%;
+  width: 100%;
   flex-direction: row;
   border-radius: 0.2vw;
   font-family: "Roboto";
-
   padding: 1vh;
   position: relative;
   margin-top: 6vh;
   margin-right: 3.5;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 0.8vh;
   flex-wrap: wrap;
   @media only screen and (max-width: 1024px) {
@@ -23,13 +22,42 @@ export const PPO2ENDTable = styled.div`
   }
 `;
 
+export const PPO2Section = styled.div`
+  width: 100%;
+  padding: 1%;
+  box-sizing: border-box;
+`;
+
+export const SectionTitle = styled.div`
+  height: 5vh;
+  text-align: left;
+  font-size: 1.5vw;
+  font-family: "Roboto";
+  margin-left: 2%;
+  width: 96%;
+  border-radius: 1vh 1vh 0 0;
+  border-bottom: 1px solid white;
+  margin-bottom: 1vh;
+  font-weight: bold;
+  @media only screen and (max-width: 1024px) {
+    font-size: 2vh;
+    color: #ffffff;
+    height: min-content;
+    text-align: left;
+    white-space: nowrap;
+    padding-left: 1vh;
+    box-sizing: border-box;
+    margin-bottom: 0.5vh;
+  }
+`;
+
 export const TableRow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   color: black;
-  width: 32%;
+  width: 20%;
   z-index: 2;
   gap: 0;
   height: 100%;
@@ -39,6 +67,7 @@ export const TableRow = styled.div`
 
   @media only screen and (max-width: 1024px) {
     height: 8vh;
+    width: 32%;
   }
 `;
 
@@ -135,11 +164,11 @@ export const TitleTableRow = styled.div`
   }
 `;
 
-export const DiveTankAndGraphContainer = styled.div`
+export const BarGraphsContainer = styled.div`
   display: flex;
   justify-content: center;
   color: #ffffff;
-  width: 88.2%;
+  width: 100%;
   box-sizing: border-box;
   flex-wrap: wrap;
   @media only screen and (max-width: 1024px) {

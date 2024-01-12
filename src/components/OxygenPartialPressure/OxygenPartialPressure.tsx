@@ -100,7 +100,7 @@ const OxygenPartialPressure = ({
 
   return (
     <>
-      <S.DiveTankAndGraphContainer>
+      <S.BarGraphsContainer>
         {/*<PPO2graph PPO2DataSet={PPO2Data}></PPO2graph>*/}
         <SimpleBarGraph
           zones={PPO2zones}
@@ -112,24 +112,29 @@ const OxygenPartialPressure = ({
           title={`Narcosis with E.N.D = ${NARCOTIC_DEPTH_TARGET} m`}
           dangerIcon={NarcosisIcon}
         />
-      </S.DiveTankAndGraphContainer>
-      <S.PPO2ENDTable>
-        <S.TableRow>
-          <S.StandardTableCell color="blue">
-            {ArrowDownIcon}
-            <div>DEPTH</div>
-          </S.StandardTableCell>
-          <S.TableCell color={nitrogenColor}>
-            {NarcosisIcon}
-            <div>E.N.D</div>
-          </S.TableCell>
-          <S.TableCell color={oxygenColor}>
-            {ToxicityIcon}
-            <div>PPO2</div>
-          </S.TableCell>
-        </S.TableRow>
-        {RenderedPP02Array}
-      </S.PPO2ENDTable>
+      </S.BarGraphsContainer>
+      <S.PPO2Section>
+        <S.SectionTitle>
+          PP02 and equivalent Narcotic depth table
+        </S.SectionTitle>
+        <S.PPO2ENDTable>
+          <S.TableRow>
+            <S.StandardTableCell color="blue">
+              {ArrowDownIcon}
+              <div>DEPTH</div>
+            </S.StandardTableCell>
+            <S.TableCell color={nitrogenColor}>
+              {NarcosisIcon}
+              <div>E.N.D</div>
+            </S.TableCell>
+            <S.TableCell color={oxygenColor}>
+              {ToxicityIcon}
+              <div>PPO2</div>
+            </S.TableCell>
+          </S.TableRow>
+          {RenderedPP02Array}
+        </S.PPO2ENDTable>
+      </S.PPO2Section>
       {/* <MODcomponent OxygenPercentage={oxygenPercentage} /> */}
     </>
   );

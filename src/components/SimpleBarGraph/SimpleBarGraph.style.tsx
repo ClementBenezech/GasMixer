@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
 export const BarChartContainer = styled.div`
-  width: 96%;
+  width: 98%;
   height: min-content;
   border-radius: 0.5vh;
   box-sizing: border-box;
   margin-bottom: 1vh;
-  border: 1px solid white;
   padding-bottom: 2vh;
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+    margin-top: 1vh;
+    padding-bottom: 0.5vh;
+  }
 `;
 
 export const BarChartTitle = styled.div`
@@ -15,28 +19,31 @@ export const BarChartTitle = styled.div`
   text-align: left;
   font-size: 1.5vw;
   font-family: "Roboto";
+  margin-left: 2%;
+  width: 96%;
+  box-sizing: border-box;
+  border-radius: 1vh 1vh 0 0;
+  border-bottom: 1px solid white;
+  margin-bottom: 0.5vh;
+  font-weight: bold;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     color: #ffffff;
     height: min-content;
     text-align: left;
-    width: 100%;
+
     white-space: nowrap;
-    border-radius: 1vh 1vh 0 0;
-    border-bottom: 1px solid white;
-    padding-left: 1vh;
-    box-sizing: border-box;
   }
 `;
 export const BarChartBarContainer = styled.div`
-  height: 80%;
+  height: 8vh;
   display: flex;
   flex-direction: row;
+  height: 7vh;
+  margin-top: 1vh;
+  width: 96%;
+  margin-left: 2%;
   @media only screen and (max-width: 1024px) {
-    height: 7vh;
-    margin-top: 1vh;
-    width: 96%;
-    margin-left: 2%;
   }
 `;
 
@@ -91,9 +98,13 @@ export const Bar = styled.div<{
 
 export const ScaleContainer = styled.div`
   display: flex;
+  font-size: 2vh;
   width: 96%;
   margin-left: 2%;
-  justify-content: space-between;
-  height: 2vh;
+  height: 3vh;
   font-family: "Roboto";
+  justify-content: space-between;
+
+  @media only screen and (max-width: 1024px) {
+  }
 `;

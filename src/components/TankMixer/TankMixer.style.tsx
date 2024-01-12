@@ -8,7 +8,7 @@ export const TankMixerContainer = styled.div`
   align-items: center;
   @media only screen and (max-width: 1024px) {
     width: 100%;
-    height: 10%;
+    height: 25%;
     overflow: hidden;
     flex-direction: column-reverse;
   }
@@ -21,8 +21,12 @@ export const GlobalContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding: 2vw;
+  width: 80%;
   @media only screen and (max-width: 1024px) {
     flex-direction: column-reverse;
+    width: 96%;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
   }
 `;
 
@@ -39,7 +43,7 @@ export const TankAndSliderContainer = styled.div`
   padding: 1vw;
   @media only screen and (max-width: 1024px) {
     position: relative;
-    height: 20vh;
+    height: 15vh;
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
@@ -87,7 +91,23 @@ export const DiveTankContainer = styled.div`
 `;
 export const GasMixerSlider = styled.input`
   -webkit-appearance: none;
-  background: transparent;
+
+  &::-moz-range-track {
+    background: #ffffff;
+    border-radius: 2vh;
+    border: 1px solid white;
+    width: 100%;
+    height: 2vh;
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 50%;
+    background: #11a8ff;
+    margin-top: -1vh;
+  }
 
   &::-webkit-slider-runnable-track {
     width: 100%;
