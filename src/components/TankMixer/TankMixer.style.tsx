@@ -35,7 +35,7 @@ export const TankAndSliderContainer = styled.div`
   height: 100vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   position: fixed;
   left: 0;
   top: 0;
@@ -74,6 +74,7 @@ export const SlidersContainer = styled.div`
 export const SliderName = styled.div`
   font-size: 2vh;
   padding: 1vw;
+  font-weight: bold;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     padding: 0.2vh;

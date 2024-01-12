@@ -25,7 +25,10 @@ const SimpleBarGraph = ({ zones, title, dangerIcon }) => {
 
   return (
     <S.BarChartContainer>
-      <S.BarChartTitle>{title}</S.BarChartTitle>
+      <S.BarChartTitle>
+        {title}
+        <i class="fa-solid fa-gear"></i>
+      </S.BarChartTitle>
       <S.ScaleContainer>
         <div>0 m</div>
         <div>300 m</div>

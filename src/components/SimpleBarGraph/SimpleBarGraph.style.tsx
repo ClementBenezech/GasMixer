@@ -26,6 +26,8 @@ export const BarChartTitle = styled.div`
   border-bottom: 1px solid white;
   margin-bottom: 0.5vh;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     color: #ffffff;

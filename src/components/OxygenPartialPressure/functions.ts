@@ -1,3 +1,5 @@
+import { dangerColor, safeColor } from "../utils/constants";
+
 export const getPPO2ZOnes = (
   shallowestSafeOperatingDepth: number,
   deepestSafeOperatingDepth: number
@@ -6,18 +8,19 @@ export const getPPO2ZOnes = (
     {
       start: 0,
       end: shallowestSafeOperatingDepth,
-      color: "linear-gradient(180deg, #6f00ff 70%, #e1e1e1 100%)",
+      color: dangerColor,
+
       danger: true,
     },
     {
       start: shallowestSafeOperatingDepth,
       end: deepestSafeOperatingDepth,
-      color: "linear-gradient(140deg, #e1e1e1 10%, #00d773 50%)",
+      color: safeColor,
     },
     {
       start: deepestSafeOperatingDepth,
       end: 300,
-      color: "linear-gradient(140deg, #e1e1e1 10%, #ff6e6e 50%)",
+      color: dangerColor,
       danger: true,
     },
   ];
@@ -34,7 +37,7 @@ export const getNarcosisZones = (
         currentGasNitrogenPercentage > 0 && maxNarcosisDepth < 300
           ? maxNarcosisDepth
           : 300,
-      color: "linear-gradient(140deg, #e1e1e1 10%, #00d773 50%)",
+      color: safeColor,
     },
     {
       start:
@@ -42,7 +45,7 @@ export const getNarcosisZones = (
           ? maxNarcosisDepth
           : 300,
       end: 300,
-      color: "linear-gradient(140deg, #e1e1e1 10%, #ff906e 50%)",
+      color: "#be45be",
       danger: true,
     },
   ];

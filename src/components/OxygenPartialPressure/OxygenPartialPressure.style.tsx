@@ -11,7 +11,7 @@ export const PPO2ENDTable = styled.div`
   position: relative;
   margin-top: 6vh;
   margin-right: 3.5;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 0.8vh;
   flex-wrap: wrap;
   @media only screen and (max-width: 1024px) {
@@ -78,7 +78,7 @@ export const TableCell = styled.div<{
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  height: 30%;
+  height: 33%;
   align-items: center;
   box-sizing: border-box;
   font-size: 0.9vw;
@@ -91,6 +91,8 @@ export const TableCell = styled.div<{
     width: 25%;
     padding: 0.5vh;
     background: #d2d2d2;
+    height: 100%;
+    font-size: 2vh;
   }
   & > div {
     padding-left: 1vh;
@@ -103,9 +105,11 @@ export const TableCell = styled.div<{
   }
 
   @media only screen and (max-width: 1024px) {
-    font-size: 1.8vh;
+    font-size: 2vh;
+
     background: #d2d2d2;
     min-width: 90%;
+    height: 100%;
   }
 `;
 
