@@ -13,7 +13,7 @@ import {
   getEquivalentNarcosisDepthForDepth,
   getMODforTargetPPO2,
 } from "../utils/functions";
-import * as S from "./OxygenPartialPressure.style";
+import * as S from "./GasAnalysis.style";
 import { getNarcosisZones, getPPO2ZOnes } from "./functions";
 
 const OxygenPartialPressure = ({
@@ -113,7 +113,7 @@ const OxygenPartialPressure = ({
           dangerIcon={NarcosisIcon}
         />
       </S.BarGraphsContainer>
-      <S.PPO2Section>
+      <S.PPO2ENDSection>
         <S.SectionTitle>
           PP02 and equivalent Narcotic depth table
         </S.SectionTitle>
@@ -134,7 +134,7 @@ const OxygenPartialPressure = ({
           </S.TableRow>
           {RenderedPP02Array}
         </S.PPO2ENDTable>
-      </S.PPO2Section>
+      </S.PPO2ENDSection>
       {/* <MODcomponent OxygenPercentage={oxygenPercentage} /> */}
     </>
   );

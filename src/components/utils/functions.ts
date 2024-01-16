@@ -32,3 +32,32 @@ export const getEquivalentNarcosisDepthForDepth = (
 
   return EquivalentNarcosisDepth;
 };
+
+export const getTankGases = ({
+  oxygen,
+  nitrogen,
+  helium,
+}: {
+  oxygen: number;
+  nitrogen: number;
+  helium: number;
+}) => {
+  console.log(oxygen);
+  return [
+    {
+      percentage: nitrogen,
+      color: "linear-gradient(180deg, rgba(255,255,255,0) 0%, #0fa7f4 60%)",
+      name: "Nitrogen",
+    },
+    {
+      percentage: oxygen,
+      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #d30051 60%)",
+      name: "Oxygen",
+    },
+    {
+      percentage: helium,
+      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #00d378 60%)",
+      name: "Helium",
+    },
+  ];
+};

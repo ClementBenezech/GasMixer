@@ -1,7 +1,8 @@
 import DiveTank from "../DiveTank/DiveTank";
-import OxygenPartialPressure from "../OxygenPartialPressure/OxygenPartialPressure";
+import GasAnalysis from "../GasAnalysis/GasAnalysis";
 import { useSlider } from "./useSlider";
 import * as S from "./TankMixer.style";
+import { getTankGases } from "../utils/functions";
 
 const TankMixer = () => {
   const oxygenSliderState = useSlider({
@@ -12,8 +13,6 @@ const TankMixer = () => {
     step: 1,
   });
 
-  console.log(oxygenSliderState.otherGasMax);
-
   const heliumSliderState = useSlider({
     id: "HeliumSlider",
     min: 0,
@@ -23,43 +22,28 @@ const TankMixer = () => {
     defaultState: 0,
   });
 
+  // If all the nitrogen is out of the mix, oxygen will 'push out' helium.
   if (heliumSliderState.value + oxygenSliderState.value > 100) {
     heliumSliderState.setGasValue(100 - oxygenSliderState.value);
   }
 
-  const gasPercentages = [
-    oxygenSliderState.value,
-    100 - heliumSliderState.value - oxygenSliderState.value,
-    heliumSliderState.value,
-  ];
+  const gasPercentages = {
+    oxygen: oxygenSliderState.value,
+    nitrogen: 100 - heliumSliderState.value - oxygenSliderState.value,
+    helium: heliumSliderState.value,
+  };
 
-  const TankGases = [
-    {
-      percentage: gasPercentages[1],
-      color: "linear-gradient(180deg, rgba(255,255,255,0) 0%, #0fa7f4 60%)",
-      name: "Nitrogen",
-    },
-    {
-      percentage: gasPercentages[0],
-      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #d30051 60%)",
-      name: "Oxygen",
-    },
-    {
-      percentage: gasPercentages[2],
-      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #00d378 60%)",
-      name: "Helium",
-    },
-  ];
+  const TankGases = getTankGases(gasPercentages);
+  console.log(TankGases);
 
   return (
     <S.GlobalContainer>
       <S.TankMixerContainer>
         <S.TankAndSliderContainer>
           <S.SlidersContainer>
-            <S.SliderName>{`Oxygen: ${gasPercentages[0]} %`}</S.SliderName>
+            <S.SliderName>{`Oxygen: ${gasPercentages.oxygen} %`}</S.SliderName>
             <S.GasMixerSlider {...oxygenSliderState} />
-            <S.SliderName> {`Helium: ${gasPercentages[2]} %`}</S.SliderName>
-
+            <S.SliderName> {`Helium: ${gasPercentages.helium} %`}</S.SliderName>
             <S.GasMixerSlider {...heliumSliderState} />
           </S.SlidersContainer>
           <S.DiveTankContainer>
@@ -67,7 +51,7 @@ const TankMixer = () => {
           </S.DiveTankContainer>
         </S.TankAndSliderContainer>
       </S.TankMixerContainer>
-      <OxygenPartialPressure tankGases={TankGases} />
+      <GasAnalysis tankGases={TankGases} />
     </S.GlobalContainer>
   );
 };

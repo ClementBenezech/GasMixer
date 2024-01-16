@@ -22,7 +22,7 @@ export const PPO2ENDTable = styled.div`
   }
 `;
 
-export const PPO2Section = styled.div`
+export const PPO2ENDSection = styled.div`
   width: 100%;
   padding: 1%;
   box-sizing: border-box;
