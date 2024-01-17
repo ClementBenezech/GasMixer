@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import * as S from "./DiveTank.style";
 
-import { DiveTankProps } from "./types";
+import { AppContext } from "../../AppContext";
 
-const DiveTank = ({ gases }: DiveTankProps) => {
-  console.log(gases);
-  const TankGases = gases.map((gas) => {
+const DiveTank = () => {
+  const { appData } = useContext(AppContext);
+  const { tankGases: gases } = appData;
+
+  const TankGases = Object.values(gases).map((gas) => {
     return gas.percentage > 0 ? (
       <S.GasPercentageBar percentage={gas.percentage} gasColor={gas.color}>
         <S.GasPercentageAmount>

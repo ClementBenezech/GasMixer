@@ -1,7 +1,35 @@
 import * as S from "./SimpleBarGraph.style";
-import skull from "/home/clement/DiveFacts/src/assets/skull-crossbones-solid.svg";
+import { DataContext } from "../../AppContext";
+import { Zones } from "../GasAnalysis/types";
 
-const SimpleBarGraph = ({ zones, title, dangerIcon }) => {
+export type EditParameter = {
+  initialValue: number;
+  setValue: (context: DataContext) => void;
+  step: number;
+  targetParameter: string;
+  min: number;
+  max: number;
+  inputType: string;
+};
+
+export type SimpleBarGraphInnerProps = {
+  zones: Zones;
+  title: string;
+  dangerIcon: JSX.Element;
+  editParameterComponent: JSX.Element;
+};
+
+export type SimpleBarGraphPassedProps = React.HTMLAttributes<HTMLDivElement>;
+export type SimpleBarGraphProps = SimpleBarGraphInnerProps &
+  SimpleBarGraphPassedProps;
+
+const SimpleBarGraph = ({
+  zones,
+  title,
+  dangerIcon,
+  editParameterComponent,
+  ...restProps
+}: SimpleBarGraphProps) => {
   const RenderedBars = zones.map((zone, index) => {
     const barWidth = zone.end - zone.start;
     return zone.end > 0 && zone.start < 300 ? (
@@ -24,16 +52,18 @@ const SimpleBarGraph = ({ zones, title, dangerIcon }) => {
   });
 
   return (
-    <S.BarChartContainer>
+    <S.BarChartContainer {...restProps}>
       <S.BarChartTitle>
-        {title}
-        <i className="fa-solid fa-gear"></i>
+        <S.GraphTitle>{title}</S.GraphTitle>
+        <S.ParameterValue>
+          {editParameterComponent.props.value}
+        </S.ParameterValue>
+        {editParameterComponent}
       </S.BarChartTitle>
       <S.ScaleContainer>
         <div>0 m</div>
         <div>300 m</div>
       </S.ScaleContainer>
-
       <S.BarChartBarContainer>{RenderedBars}</S.BarChartBarContainer>
     </S.BarChartContainer>
   );

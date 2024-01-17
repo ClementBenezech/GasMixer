@@ -20,7 +20,7 @@ export const GlobalContainer = styled.div`
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  padding: 2vw;
+  padding: 0 2vw;
   width: 80%;
   @media only screen and (max-width: 1024px) {
     flex-direction: column-reverse;

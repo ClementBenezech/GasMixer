@@ -18,7 +18,8 @@ export const PPO2ENDTable = styled.div`
     width: 96vw;
     justify-content: center;
     align-items: center;
-    margin-top: 0.5vh;
+    margin-top: 0px;
+    padding: 0.5vh;
   }
 `;
 
@@ -64,7 +65,7 @@ export const TableRow = styled.div`
   background: #d2d2d2;
   border-radius: 0.7vh;
   overflow: hidden;
-
+  opacity: 0.7;
   @media only screen and (max-width: 1024px) {
     height: 8vh;
     width: 32%;
@@ -191,4 +192,8 @@ export const DiveTankContainer = styled.div`
   font-size: 80%;
   white-space: nowrap;
   min-width: min-content;
+`;
+
+export const ParameterInput = styled.input`
+  width: 100%;
 `;

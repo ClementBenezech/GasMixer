@@ -43,21 +43,21 @@ export const getTankGases = ({
   helium: number;
 }) => {
   console.log(oxygen);
-  return [
-    {
+  return {
+    nitrogen: {
       percentage: nitrogen,
       color: "linear-gradient(180deg, rgba(255,255,255,0) 0%, #0fa7f4 60%)",
       name: "Nitrogen",
     },
-    {
+    oxygen: {
       percentage: oxygen,
       color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #d30051 60%)",
       name: "Oxygen",
     },
-    {
+    helium: {
       percentage: helium,
       color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #00d378 60%)",
       name: "Helium",
     },
-  ];
+  };
 };

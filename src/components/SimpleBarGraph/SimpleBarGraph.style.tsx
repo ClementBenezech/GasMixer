@@ -7,6 +7,7 @@ export const BarChartContainer = styled.div`
   box-sizing: border-box;
   margin-bottom: 1vh;
   padding-bottom: 2vh;
+  opacity: 0.8;
   @media only screen and (max-width: 1024px) {
     width: 100%;
     margin-top: 1vh;
@@ -15,7 +16,7 @@ export const BarChartContainer = styled.div`
 `;
 
 export const BarChartTitle = styled.div`
-  height: 20%;
+  height: 10%;
   text-align: left;
   font-size: 1.5vw;
   font-family: "Roboto";
@@ -23,25 +24,25 @@ export const BarChartTitle = styled.div`
   width: 96%;
   box-sizing: border-box;
   border-radius: 1vh 1vh 0 0;
-  border-bottom: 1px solid white;
-  margin-bottom: 0.5vh;
   font-weight: bold;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  font-family: "Roboto";
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
-    color: #ffffff;
+    color: white;
     height: min-content;
     text-align: left;
-
     white-space: nowrap;
   }
 `;
 export const BarChartBarContainer = styled.div`
-  height: 8vh;
+  height: 6vh;
   display: flex;
   flex-direction: row;
-  height: 7vh;
   margin-top: 1vh;
   width: 96%;
   margin-left: 2%;
@@ -109,4 +110,23 @@ export const ScaleContainer = styled.div`
 
   @media only screen and (max-width: 1024px) {
   }
+`;
+
+export const InputValue = styled.input`
+  width: 14%;
+  font-size: 1.5vh;
+`;
+
+export const ParameterValue = styled.div`
+  padding: 0 1vh;
+  width: 19%;
+  box-sizing: border-box;
+  border-radius: 1vh;
+  border: 1px solid white;
+`;
+
+export const GraphTitle = styled.div`
+  width: 80%;
+
+  font-family: "Roboto";
 `;
