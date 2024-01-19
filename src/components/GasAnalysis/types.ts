@@ -3,6 +3,7 @@ export type Zone = {
   end: number;
   color: string;
   danger?: boolean;
+  dangerLabel?: string;
 };
 
 export type Zones = Zone[];

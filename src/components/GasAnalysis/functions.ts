@@ -11,6 +11,7 @@ export const getPPO2ZOnes = (
       end: shallowestSafeOperatingDepth,
       color: dangerColor,
       danger: true,
+      dangerLabel: "Hypoxia",
     },
     {
       start: shallowestSafeOperatingDepth,
@@ -22,6 +23,7 @@ export const getPPO2ZOnes = (
       end: 300,
       color: dangerColor,
       danger: true,
+      dangerLabel: "Toxicity",
     },
   ];
 };
@@ -47,6 +49,7 @@ export const getNarcosisZones = (
       end: 300,
       color: "#be45be",
       danger: true,
+      dangerLabel: "Narcosis",
     },
   ];
 };

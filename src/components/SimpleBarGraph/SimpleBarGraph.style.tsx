@@ -7,7 +7,7 @@ export const BarChartContainer = styled.div`
   box-sizing: border-box;
   margin-bottom: 1vh;
   padding-bottom: 2vh;
-  opacity: 0.8;
+  opacity: 1;
   @media only screen and (max-width: 1024px) {
     width: 100%;
     margin-top: 1vh;
@@ -37,6 +37,7 @@ export const BarChartTitle = styled.div`
     height: min-content;
     text-align: left;
     white-space: nowrap;
+    flex-wrap: nowrap;
   }
 `;
 export const BarChartBarContainer = styled.div`
@@ -71,25 +72,25 @@ export const DepthLabel = styled.div`
 export const Bar = styled.div<{
   color?: string;
   width?: string;
-  zindex?: string;
 }>`
   height: 80%;
   width: ${(props) => props.width}%;
+  max-width: ${(props) => props.width}%;
   background: ${(props) => props.color ?? "red"};
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: ${(props) => props.zindex};
 
   border-radius: 2vh;
-  box-shadow: 0 2px 5px;
+  box-shadow: 0px 1px 1px;
+  box-sizing: border-box;
 
   & > i {
     padding: 1vh;
 
-    font-size: 4vh;
+    font-size: 3vh;
   }
 
   &:last-child {
@@ -107,6 +108,7 @@ export const ScaleContainer = styled.div`
   height: 3vh;
   font-family: "Roboto";
   justify-content: space-between;
+  margin-top: 2vh;
 
   @media only screen and (max-width: 1024px) {
   }
@@ -119,14 +121,16 @@ export const InputValue = styled.input`
 
 export const ParameterValue = styled.div`
   padding: 0 1vh;
-  width: 19%;
+  width: 12%;
   box-sizing: border-box;
   border-radius: 1vh;
   border: 1px solid white;
 `;
 
 export const GraphTitle = styled.div`
-  width: 80%;
-
+  width: 35%;
   font-family: "Roboto";
+  @media only screen and (max-width: 1024px) {
+    width: 35vw;
+  }
 `;

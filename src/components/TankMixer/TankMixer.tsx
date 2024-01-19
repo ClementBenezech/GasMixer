@@ -59,10 +59,11 @@ const TankMixer = () => {
         <S.TankMixerContainer>
           <S.TankAndSliderContainer>
             <S.SlidersContainer>
-              <S.SliderName>{`Oxygen: ${appData.gasPercentages.oxygen} %`}</S.SliderName>
+              <S.SliderName>
+                {`Oxygen: ${appData.gasPercentages.oxygen} %`}
+              </S.SliderName>
               <S.GasMixerSlider {...oxygenSliderState} />
               <S.SliderName>
-                {" "}
                 {`Helium: ${appData.gasPercentages.helium} %`}
               </S.SliderName>
               <S.GasMixerSlider {...heliumSliderState} />
@@ -73,6 +74,15 @@ const TankMixer = () => {
           </S.TankAndSliderContainer>
         </S.TankMixerContainer>
         <GasAnalysis />
+        <S.AppTitleContainer>
+          <S.AppTitle color="orange">{`Gas`}</S.AppTitle>
+          <S.AppTitle color="White">{`Blender`}</S.AppTitle>
+          <S.AppInfo>
+            <S.Disclaimer>{`For education only.`}</S.Disclaimer>
+            <S.Disclaimer color="red">{`DO NOT USE to plan dives!`}</S.Disclaimer>
+            <S.Disclaimer>{`© Clement Benezech 2024`}</S.Disclaimer>
+          </S.AppInfo>
+        </S.AppTitleContainer>
       </S.GlobalContainer>
     </AppContext.Provider>
   );
