@@ -131,7 +131,7 @@ export const StandardTableCell = styled.div<{
   backgroundColor?: string;
 }>`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   color: #ede5e5;
   background: ${(props) => props.color};
   width: 100%;
@@ -145,8 +145,8 @@ export const StandardTableCell = styled.div<{
   font-weight: bold;
 
   & > i {
-    width: 10%;
-    margin-right: 3vh;
+    width: 25%;
+    margin-right: 0;
     padding: 0.5vh;
     box-sizing: border-box;
   }
@@ -161,8 +161,8 @@ export const StandardTableCell = styled.div<{
     & > i {
     }
     & > div {
-      padding-left: 1vh;
-      font-size: 2vh;
+      padding-left: 0.3vh;
+      font-size: 1.9vh;
       font-weight: bold;
     }
   }
@@ -224,5 +224,15 @@ export const FillerIcon = styled.div`
   font-size: 4vh;
   @media only screen and (max-width: 1024px) {
     width: 23%;
+  }
+`;
+
+export const DepthValue = styled.div`
+  width: 80%;
+  text-align: left;
+  margin-left: 2vw;
+  @media only screen and (max-width: 1024px) {
+    margin-left: 0.1vh;
+    width: 50%;
   }
 `;

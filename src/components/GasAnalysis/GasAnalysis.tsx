@@ -50,22 +50,20 @@ const OxygenPartialPressure = () => {
     return (
       <S.TableCard opacity={isGasMixSafe ? 1 : 0.8}>
         <S.StandardTableCell color={CellColors.cell}>
-          {isGasMixSafe ? checkIcon : WarningIcon}
-          <div>{`${depth} m`}</div>
+          <S.DepthValue>{`${depth} m`}</S.DepthValue>
+          {isDepthNarcotic && NarcosisIcon}
+          {!isPartialPressureSafe && DeathIcon}
+          {isGasMixSafe && checkIcon}
         </S.StandardTableCell>
         <S.TableCardRow>
-          <S.TableCell width="40%" color={CellColors.PPN2}>
-            END
-          </S.TableCell>
-          <S.TableCell width="60%" color={CellColors.PPO2}>
-            PPO2
-          </S.TableCell>
+          <S.TableCell color={CellColors.PPN2}>END</S.TableCell>
+          <S.TableCell color={CellColors.PPO2}>PPO2</S.TableCell>
         </S.TableCardRow>
         <S.TableCardRow>
-          <S.TableCell width="40%" color={CellColors.PPN2}>
+          <S.TableCell color={CellColors.PPN2}>
             <div>{`${equivalentNarcoticDepth}`}</div>
           </S.TableCell>
-          <S.TableCell width="60%" color={CellColors.PPO2}>
+          <S.TableCell color={CellColors.PPO2}>
             <div>{`${oxygenPartialPressure}`}</div>
           </S.TableCell>
         </S.TableCardRow>
