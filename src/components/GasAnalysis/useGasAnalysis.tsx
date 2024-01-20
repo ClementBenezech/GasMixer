@@ -9,6 +9,10 @@ import { getNarcosisZones, getPPO2ZOnes } from "./functions";
 const useGasAnalysis = () => {
   const { appData } = useContext(AppContext);
   const { tankGases, appSettings } = appData;
+  const isOxygenNarcotic = appData.appSettings.isOxygenNarcotic;
+  const NarcoticGasPercentageInMix = isOxygenNarcotic
+    ? tankGases.oxygen.percentage + tankGases.nitrogen.percentage
+    : tankGases.nitrogen.percentage;
 
   const shallowestSafeOperatingDepth = Math.max(
     getMODforTargetPPO2(
@@ -38,7 +42,7 @@ const useGasAnalysis = () => {
   );
 
   const NarcosisZones = getNarcosisZones(
-    tankGases.nitrogen.percentage,
+    NarcoticGasPercentageInMix,
     maxNarcosisDepth
   );
 

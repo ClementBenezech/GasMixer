@@ -122,7 +122,6 @@ export const ParameterValueAndUnit = styled.div`
   width: min-content;
   box-sizing: border-box;
   border-radius: 0.5vh;
-  border: 2px solid rgb(255, 255, 255);
   display: flex;
 
   justify-content: center;

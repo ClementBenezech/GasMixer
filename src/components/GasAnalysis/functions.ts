@@ -29,21 +29,21 @@ export const getPPO2ZOnes = (
 };
 
 export const getNarcosisZones = (
-  currentGasNitrogenPercentage: number,
+  currentGasNarcoticGasPercentage: number,
   maxNarcosisDepth: number
 ) => {
   return [
     {
       start: 0,
       end:
-        currentGasNitrogenPercentage > 0 && maxNarcosisDepth < 300
+        currentGasNarcoticGasPercentage > 0 && maxNarcosisDepth < 300
           ? maxNarcosisDepth
           : 300,
       color: safeColor,
     },
     {
       start:
-        currentGasNitrogenPercentage > 0 && maxNarcosisDepth < 300
+        currentGasNarcoticGasPercentage > 0 && maxNarcosisDepth < 300
           ? maxNarcosisDepth
           : 300,
       end: 300,
