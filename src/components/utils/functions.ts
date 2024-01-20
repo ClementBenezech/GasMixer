@@ -4,13 +4,23 @@ export const getMODforTargetPPO2 = (PPO2: number, O2Percentage: number) => {
 
 export const getDepthForEquivalentNarcosisDepth = (
   desiredEquivalentNarcoticDepth: number,
-  nitrogenPercentage: number
+  nitrogenPercentage: number,
+  oxygenPercentage: number,
+  oxygenIsNarcotic: boolean
 ) => {
   const N2_PARTIALPRESSURE_IN_AIR_AT_1ATM = 0.79;
+  const O2_PARTIALPRESSURE_IN_AIR_AT_1ATM = 0.21;
+  const TotalNarcoticGasesPartialPressureInAir = oxygenIsNarcotic
+    ? N2_PARTIALPRESSURE_IN_AIR_AT_1ATM + O2_PARTIALPRESSURE_IN_AIR_AT_1ATM
+    : N2_PARTIALPRESSURE_IN_AIR_AT_1ATM;
+  const TotalNarcoticGasesPartialPressureInMix = oxygenIsNarcotic
+    ? nitrogenPercentage + oxygenPercentage
+    : nitrogenPercentage;
   const NarcoticRatio =
     1 +
-    (nitrogenPercentage / 100 - N2_PARTIALPRESSURE_IN_AIR_AT_1ATM) /
-      N2_PARTIALPRESSURE_IN_AIR_AT_1ATM;
+    (TotalNarcoticGasesPartialPressureInMix / 100 -
+      TotalNarcoticGasesPartialPressureInAir) /
+      TotalNarcoticGasesPartialPressureInAir;
 
   const maxDepthToComplyWithEND =
     desiredEquivalentNarcoticDepth / NarcoticRatio;
@@ -20,13 +30,23 @@ export const getDepthForEquivalentNarcosisDepth = (
 
 export const getEquivalentNarcosisDepthForDepth = (
   depth: number,
-  nitrogenPercentage: number
+  nitrogenPercentage: number,
+  oxygenPercentage: number,
+  oxygenIsNarcotic: boolean
 ) => {
   const N2_PARTIALPRESSURE_IN_AIR_AT_1ATM = 0.79;
+  const O2_PARTIALPRESSURE_IN_AIR_AT_1ATM = 0.21;
+  const TotalNarcoticGasesPartialPressureInAir = oxygenIsNarcotic
+    ? N2_PARTIALPRESSURE_IN_AIR_AT_1ATM + O2_PARTIALPRESSURE_IN_AIR_AT_1ATM
+    : N2_PARTIALPRESSURE_IN_AIR_AT_1ATM;
+  const TotalNarcoticGasesPartialPressureInMix = oxygenIsNarcotic
+    ? nitrogenPercentage + oxygenPercentage
+    : nitrogenPercentage;
   const NarcoticRatio =
     1 +
-    (nitrogenPercentage / 100 - N2_PARTIALPRESSURE_IN_AIR_AT_1ATM) /
-      N2_PARTIALPRESSURE_IN_AIR_AT_1ATM;
+    (TotalNarcoticGasesPartialPressureInMix / 100 -
+      TotalNarcoticGasesPartialPressureInAir) /
+      TotalNarcoticGasesPartialPressureInAir;
 
   const EquivalentNarcosisDepth = Math.round(depth * NarcoticRatio);
 

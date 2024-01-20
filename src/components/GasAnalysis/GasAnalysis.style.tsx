@@ -39,6 +39,8 @@ export const SectionTitle = styled.div`
   border-bottom: 1px solid white;
   margin-bottom: 1vh;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     color: #ffffff;
@@ -95,6 +97,7 @@ export const TableCell = styled.div<{
   min-width: 3vw;
   color: ${(props) => props.color ?? "white"};
   overflow: hidden;
+  font-weight: bold;
   & > i {
     color: ${(props) => props.color ?? "white"};
     width: 10%;
@@ -131,11 +134,11 @@ export const StandardTableCell = styled.div<{
   backgroundColor?: string;
 }>`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   color: #ede5e5;
   background: ${(props) => props.color};
   width: 100%;
-  height: 40%;
+  height: 4vh;
   align-items: center;
   box-sizing: border-box;
   font-size: 100%;
@@ -143,6 +146,7 @@ export const StandardTableCell = styled.div<{
   min-width: min-content;
   font-size: 3vh;
   font-weight: bold;
+  padding: 2% 16%;
 
   & > i {
     width: 25%;
@@ -158,10 +162,11 @@ export const StandardTableCell = styled.div<{
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     min-width: 90%;
+    height: 40%;
+    padding: 0.5vh;
     & > i {
     }
     & > div {
-      padding-left: 0.3vh;
       font-size: 1.9vh;
       font-weight: bold;
     }
@@ -230,9 +235,16 @@ export const FillerIcon = styled.div`
 export const DepthValue = styled.div`
   width: 80%;
   text-align: left;
-  margin-left: 2vw;
   @media only screen and (max-width: 1024px) {
-    margin-left: 0.1vh;
+    margin-left: 0.7vh;
     width: 50%;
   }
+`;
+
+export const ColorLetter = styled.span`
+  color: #ff9a1f;
+`;
+
+export const TitleLabelContainer = styled.div`
+  width: 50%;
 `;

@@ -34,7 +34,7 @@ export const BarChartTitle = styled.div`
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     color: white;
-    height: min-content;
+    height: 2vh;
     text-align: left;
     white-space: nowrap;
     flex-wrap: nowrap;
@@ -44,7 +44,6 @@ export const BarChartBarContainer = styled.div`
   height: 6vh;
   display: flex;
   flex-direction: row;
-  margin-top: 1vh;
   width: 96%;
   margin-left: 2%;
   @media only screen and (max-width: 1024px) {
@@ -119,18 +118,64 @@ export const InputValue = styled.input`
   font-size: 1.5vh;
 `;
 
-export const ParameterValue = styled.div`
-  padding: 0 1vh;
-  width: 12%;
+export const ParameterValueAndUnit = styled.div`
+  width: min-content;
   box-sizing: border-box;
-  border-radius: 1vh;
-  border: 1px solid white;
+  border-radius: 0.5vh;
+  border: 2px solid rgb(255, 255, 255);
+  display: flex;
+
+  justify-content: center;
+  overflow: hidden;
+  width: min-content;
+  margin-right: 1vw;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: 1024px) {
+    width: 10vw;
+    flex-wrap: wrap;
+  }
+`;
+
+export const ParameterValue = styled.div`
+  background: orange;
+  width: 100%;
+  text-align: center;
+  padding: 0 0.5vh;
+  font-size: 1.5vw;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.7vh;
+  }
+`;
+
+export const ParameterUnit = styled.div`
+  font-size: 1vw;
+  background: white;
+  color: black;
+  width: 100%;
+  text-align: center;
+  padding: 0 0.5vh;
+  @media only screen and (max-width: 1024px) {
+    font-size: 1.5vh;
+  }
 `;
 
 export const GraphTitle = styled.div`
-  width: 35%;
+  width: 29%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: "Roboto";
   @media only screen and (max-width: 1024px) {
-    width: 35vw;
+    width: 60%;
+
+    margin-right: 2vw;
   }
+`;
+
+export const GraphEditParameter = styled.div`
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 `;

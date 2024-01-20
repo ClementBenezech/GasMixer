@@ -1,3 +1,5 @@
+import { useState } from "react";
+import ModalContainer from "../ModalContainer/ModalContainer";
 import * as S from "./SimpleBarGraph.style";
 import { SimpleBarGraphProps } from "./types";
 
@@ -6,7 +8,8 @@ const SimpleBarGraph = ({
   title,
   dangerIcon,
   editParameterComponent,
-  targetName,
+  editParameterUnit,
+  HelpMessage,
   ...restProps
 }: SimpleBarGraphProps) => {
   const RenderedBars = zones.map((zone) => {
@@ -30,22 +33,46 @@ const SimpleBarGraph = ({
     );
   });
 
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModalVisible = () => {
+    if (showModal) {
+      setShowModal(false);
+    }
+    setShowModal(true);
+  };
+
   return (
-    <S.BarChartContainer {...restProps}>
-      <S.BarChartTitle>
-        <S.GraphTitle>{title}</S.GraphTitle>
-        {editParameterComponent}
-        {targetName}
-        <S.ParameterValue>
-          {editParameterComponent.props.value}
-        </S.ParameterValue>
-      </S.BarChartTitle>
-      <S.ScaleContainer>
-        <div>0 m</div>
-        <div>300 m</div>
-      </S.ScaleContainer>
-      <S.BarChartBarContainer>{RenderedBars}</S.BarChartBarContainer>
-    </S.BarChartContainer>
+    <>
+      <S.BarChartContainer {...restProps}>
+        <S.BarChartTitle>
+          <S.GraphTitle>{title}</S.GraphTitle>
+          <S.GraphEditParameter>
+            <S.ParameterValueAndUnit>
+              <S.ParameterValue>
+                {editParameterComponent.props.value}
+              </S.ParameterValue>
+              <S.ParameterUnit>{editParameterUnit}</S.ParameterUnit>
+            </S.ParameterValueAndUnit>
+          </S.GraphEditParameter>
+          {editParameterComponent}
+          <i
+            className="fa-solid fa-circle-info"
+            onClick={toggleModalVisible}
+          ></i>
+        </S.BarChartTitle>
+        <S.ScaleContainer>
+          <div>0 m</div>
+          <div>300 m</div>
+        </S.ScaleContainer>
+        <S.BarChartBarContainer>{RenderedBars}</S.BarChartBarContainer>
+      </S.BarChartContainer>
+      {showModal && (
+        <ModalContainer onClose={() => setShowModal(false)}>
+          {HelpMessage}
+        </ModalContainer>
+      )}
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ export const GlobalContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 80%;
   @media only screen and (max-width: 1024px) {
@@ -60,16 +60,19 @@ export const TankAndSliderContainer = styled.div`
 
 export const SlidersContainer = styled.div`
   display: flex;
-  height: 20vh;
+  height: 22vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   font-size: 1.2vw;
   padding: 1vw;
+  border: 1px solid white;
+  border-radius: 1vh;
   @media only screen and (max-width: 1024px) {
     width: 70vw;
     height: 12vh;
+    border: none;
     & input {
       width: 100%;
     }
@@ -80,6 +83,8 @@ export const SliderName = styled.div`
   font-size: 2vh;
   padding: 1vw;
   font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
     padding: 0.2vh;
@@ -111,6 +116,9 @@ export const AppTitle = styled.div<{ color?: string }>`
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
   }
+  & > i {
+    margin-right: 2vw;
+  }
 `;
 
 export const Disclaimer = styled.div<{ color?: string }>`
@@ -119,6 +127,9 @@ export const Disclaimer = styled.div<{ color?: string }>`
   color: ${(props) => props.color ?? "white"};
   @media only screen and (max-width: 1024px) {
     font-size: 1.2vh;
+  }
+  & > a {
+    color: #eaff00;
   }
 `;
 
@@ -139,48 +150,30 @@ export const DiveTankContainer = styled.div`
   }
 `;
 export const GasMixerSlider = styled.input`
-  /*   -webkit-appearance: none;
+  cursor: pointer !important;
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  }
+`;
 
-&::-moz-range-track {
-  background: #ffffff;
-  border-radius: 2vh;
-  border: 1px solid white;
+export const NarcoticOxygenContainer = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 0;
   height: 2vh;
-}
 
-&::-moz-range-thumb {
-  border: none;
-  height: 4vh;
-  width: 4vh;
-  border-radius: 50%;
-  background: #11a8ff;
-  margin-top: -1vh;
-}
+  @media only screen and (max-width: 1024px) {
+  }
 
-&::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 2vh;
-  background: #ffffff;
-  border: 1px solid white;
-  border-radius: 2vh;
-}
-
-&::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 4vh;
-  width: 4vh;
-  border-radius: 50%;
-  background: #11a8ff;
-  margin-top: -1vh;
-}
-
-&:focus {
-  outline: none;
-}
-
-&:focus::-webkit-slider-runnable-track {
-  background: #ccc;
-} */
+  & > label {
+    width: 80%;
+    font-size: 1.5vh;
+    text-align: left;
+  }
+  & > input {
+    width: 10%;
+  }
 `;

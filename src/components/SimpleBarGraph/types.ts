@@ -3,7 +3,8 @@ import { Zones } from "../GasAnalysis/types";
 export type SimpleBarGraphInnerProps = {
   zones: Zones;
   title: string;
-  targetName: string;
+  editParameterUnit: string;
+  HelpMessage: JSX.Element;
   dangerIcon: JSX.Element;
   editParameterComponent: JSX.Element;
 };

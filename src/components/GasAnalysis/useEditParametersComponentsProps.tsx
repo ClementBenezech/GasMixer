@@ -25,7 +25,6 @@ const useEditParametersComponentsProps = () => {
         ...appData.appSettings,
         equivalentNarcoticDepth: parseInt(e.target.value),
       };
-      console.log(newSettings);
       const newContext = { ...appData, appSettings: newSettings };
       setMaxEquivalentNarcoticDepth(parseInt(e.target.value));
       setAppData(newContext);
@@ -39,9 +38,6 @@ const useEditParametersComponentsProps = () => {
     min: 1.2,
     max: 1.8,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(parseFloat(e.target.value));
-      console.log(appData.appSettings.highestOxygenPartialPressure);
-
       const newSettings = {
         ...appData.appSettings,
         highestOxygenPartialPressure: parseFloat(e.target.value),

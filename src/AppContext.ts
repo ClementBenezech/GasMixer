@@ -36,7 +36,7 @@ const defaultAppSettings: AppSettings = {
   equivalentNarcoticDepth: 40,
   lowestOxygenPartialPressure: 0.18,
   highestOxygenPartialPressure: 1.4,
-  isOxygenNarcotic: false,
+  isOxygenNarcotic: true,
   depthUnit: {
     label: "meters",
     shortLabel: "m",

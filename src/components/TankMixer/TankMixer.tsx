@@ -63,6 +63,22 @@ const TankMixer = () => {
                 {`Oxygen: ${appData.gasPercentages.oxygen} %`}
               </S.SliderName>
               <S.GasMixerSlider {...oxygenSliderState} />
+              <S.NarcoticOxygenContainer>
+                <label>Consider narcotic</label>
+                <input
+                  checked={appData.appSettings.isOxygenNarcotic ? true : false}
+                  type="checkbox"
+                  onChange={(e) => {
+                    const newSettings = {
+                      ...appData.appSettings,
+                      isOxygenNarcotic: e.currentTarget.checked,
+                    };
+                    console.log(newSettings);
+                    const newContext = { ...appData, appSettings: newSettings };
+                    setAppData(newContext);
+                  }}
+                ></input>
+              </S.NarcoticOxygenContainer>
               <S.SliderName>
                 {`Helium: ${appData.gasPercentages.helium} %`}
               </S.SliderName>
@@ -75,12 +91,21 @@ const TankMixer = () => {
         </S.TankMixerContainer>
         <GasAnalysis />
         <S.AppTitleContainer>
-          <S.AppTitle color="orange">{`Gas`}</S.AppTitle>
-          <S.AppTitle color="White">{`Blender`}</S.AppTitle>
+          <S.AppTitle color="White">
+            <i className="fa-solid fa-user-secret"></i>
+          </S.AppTitle>
+          <S.AppTitle color="orange">{`Blend`}</S.AppTitle>
+          <S.AppTitle color="White">{`Inspector`}</S.AppTitle>
+
           <S.AppInfo>
             <S.Disclaimer>{`For education only.`}</S.Disclaimer>
             <S.Disclaimer color="red">{`DO NOT USE to plan dives!`}</S.Disclaimer>
-            <S.Disclaimer>{`© Clement Benezech 2024`}</S.Disclaimer>
+            <S.Disclaimer>
+              © Clement Benezech 2024{" "}
+              <a href="mailto:clement.benezech@gmail.com">
+                <i className="fa-regular fa-envelope"></i>
+              </a>{" "}
+            </S.Disclaimer>
           </S.AppInfo>
         </S.AppTitleContainer>
       </S.GlobalContainer>

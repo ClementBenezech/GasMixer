@@ -31,7 +31,9 @@ const useGasAnalysis = () => {
   const maxNarcosisDepth = Math.round(
     getDepthForEquivalentNarcosisDepth(
       appSettings.equivalentNarcoticDepth,
-      tankGases.nitrogen.percentage
+      tankGases.nitrogen.percentage,
+      tankGases.oxygen.percentage,
+      appData.appSettings.isOxygenNarcotic
     )
   );
 
