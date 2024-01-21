@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BarChartContainer = styled.div`
   width: 98%;
@@ -81,21 +81,43 @@ export const Bar = styled.div<{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  border-radius: 2vh;
-  box-shadow: 0px 1px 1px;
   box-sizing: border-box;
+  border-radius: 1vh;
+  border: 0.3vh dashed #e5fcff;
+
+  margin: 0 1px;
+
+  ${(props) =>
+    props.width === "0" &&
+    css`
+      display: none;
+    `};
 
   & > i {
-    padding: 1vh;
+    box-sizing: border-box;
 
-    font-size: 3vh;
+    font-size: 3.5vh;
+    width: 4.5vh;
+    padding: 0.5vh;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  & > p {
+    padding-left: 2.5vw;
+    padding-right: 0.5vw;
+    border-radius: 1vh;
+    position: relative;
+    left: -2vw;
+    color: #ffffff;
   }
 
   &:last-child {
     ${DepthLabel} {
       display: none;
     }
+  }
+  &:first-child {
   }
 `;
 
@@ -128,7 +150,7 @@ export const ParameterValueAndUnit = styled.div`
   overflow: hidden;
   width: min-content;
   margin-right: 1vw;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 
   @media only screen and (max-width: 1024px) {
     width: 10vw;
@@ -141,7 +163,7 @@ export const ParameterValue = styled.div`
   width: 100%;
   text-align: center;
   padding: 0 0.5vh;
-  font-size: 1.5vw;
+  font-size: 1vw;
   @media only screen and (max-width: 1024px) {
     font-size: 1.7vh;
   }
@@ -153,9 +175,13 @@ export const ParameterUnit = styled.div`
   color: black;
   width: 100%;
   text-align: center;
+  display: flex;
+  align-items: center;
   padding: 0 0.5vh;
+
   @media only screen and (max-width: 1024px) {
     font-size: 1.5vh;
+    display: block;
   }
 `;
 

@@ -47,7 +47,7 @@ export const getNarcosisZones = (
           ? maxNarcosisDepth
           : 300,
       end: 300,
-      color: "#be45be",
+      color: dangerColor,
       danger: true,
       dangerLabel: "Narcosis",
     },

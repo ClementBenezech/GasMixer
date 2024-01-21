@@ -5,6 +5,7 @@ import * as S from "./TankMixer.style";
 import { getTankGases } from "../utils/functions";
 import { useEffect, useState } from "react";
 import { AppContext, DataContext, defaultContext } from "../../AppContext";
+import { dangerColor } from "../utils/constants";
 
 const TankMixer = () => {
   const [appData, setAppData] = useState(defaultContext);
@@ -94,8 +95,8 @@ const TankMixer = () => {
           <S.AppTitle color="White">
             <i className="fa-solid fa-user-secret"></i>
           </S.AppTitle>
-          <S.AppTitle color="orange">{`Blend`}</S.AppTitle>
-          <S.AppTitle color="White">{`Inspector`}</S.AppTitle>
+          <S.AppTitle color={dangerColor}>{`Gas`}</S.AppTitle>
+          <S.AppTitle color="White">{`Crafter`}</S.AppTitle>
 
           <S.AppInfo>
             <S.Disclaimer>{`For education only.`}</S.Disclaimer>

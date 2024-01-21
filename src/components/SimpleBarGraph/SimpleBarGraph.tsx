@@ -20,11 +20,11 @@ const SimpleBarGraph = ({
     return shouldBarBeDisplayed ? (
       <S.Bar color={zone.color} width={barWidth.toString()}>
         {zone.danger && barWidth > lowestBarWidthToShowIcon && dangerIcon}
-        {zone.danger &&
-          barWidth > lowestBarWidthToShowLabel &&
-          zone.dangerLabel}
+        {zone.danger && barWidth > lowestBarWidthToShowLabel && (
+          <p>{zone.dangerLabel}</p>
+        )}
         {!zone.danger && barWidth > lowestBarWidthToShowIcon && (
-          <i className="fa-regular fa-circle-check"></i>
+          <i className="fa-solid fa-check"></i>
         )}
         <S.DepthLabel>{`${zone.end} m`}</S.DepthLabel>
       </S.Bar>

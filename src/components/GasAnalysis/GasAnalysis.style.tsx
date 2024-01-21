@@ -135,7 +135,7 @@ export const StandardTableCell = styled.div<{
 }>`
   display: flex;
   justify-content: space-between;
-  color: #ede5e5;
+  color: #ffffff;
   background: ${(props) => props.color};
   width: 100%;
   height: 4vh;

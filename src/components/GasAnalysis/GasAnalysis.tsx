@@ -49,7 +49,7 @@ const OxygenPartialPressure = () => {
     };
 
     return (
-      <S.TableCard opacity={isGasMixSafe ? 1 : 0.9}>
+      <S.TableCard opacity={isGasMixSafe ? 1 : 1}>
         <S.StandardTableCell color={CellColors.cell}>
           <S.DepthValue>{`${depth} m`}</S.DepthValue>
           {isDepthNarcotic && NarcosisIcon}
@@ -97,9 +97,9 @@ const OxygenPartialPressure = () => {
                 pressure.
               </p>
               <p>
-                This value should generally not be higher than 1.4 ATM for
-                bottom phases, and 1.6 ATM for static phases like decompression
-                stops
+                You can go up to 1.8 ATM in this app, but this value should
+                generally not be higher than 1.4 ATM for "active" bottom phases,
+                and 1.6 ATM for static phases like decompression stops.
               </p>
               <p>
                 This value will impact the depth at which a specific mix can be
@@ -108,7 +108,7 @@ const OxygenPartialPressure = () => {
               </p>
               <p>
                 Beyond those limits, oxygen toxicity can occur, leading to
-                potential strokes, loss of regulatorive and death by drowning.
+                potential strokes, loss of consciousness and death by drowning.
               </p>
             </div>
           }
