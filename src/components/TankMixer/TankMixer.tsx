@@ -93,14 +93,16 @@ const TankMixer = () => {
         <GasAnalysis />
         <S.AppTitleContainer>
           <S.AppTitle color="White">
-            <i className="fa-solid fa-user-secret"></i>
+            <i className="fa-solid fa-screwdriver-wrench"></i>
           </S.AppTitle>
           <S.AppTitle color={dangerColor}>{`Gas`}</S.AppTitle>
           <S.AppTitle color="White">{`Crafter`}</S.AppTitle>
 
           <S.AppInfo>
             <S.Disclaimer>{`For education only.`}</S.Disclaimer>
-            <S.Disclaimer color="red">{`DO NOT USE to plan dives!`}</S.Disclaimer>
+            <S.Disclaimer
+              color={dangerColor}
+            >{`DO NOT USE to plan dives!`}</S.Disclaimer>
             <S.Disclaimer>
               © Clement Benezech 2024{" "}
               <a href="mailto:clement.benezech@gmail.com">
