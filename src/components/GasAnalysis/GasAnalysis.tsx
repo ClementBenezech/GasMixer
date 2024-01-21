@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import SimpleBarGraph from "../SimpleBarGraph/SimpleBarGraph";
 
-import { dangerColor, safeColor } from "../utils/constants";
 import { getEquivalentNarcosisDepthForDepth } from "../utils/functions";
 import * as S from "./GasAnalysis.style";
 import { AppContext } from "../../AppContext";
 import useGasAnalysis from "./useGasAnalysis";
 import useEditParametersComponentsProps from "./useEditParametersComponentsProps";
+import useThemeColors from "../utils/hooks/useThemeColors";
+import ToxicityHelpMessage from "./HelpMessages/ToxicityHelpMessage";
+import NarcosisHelpMessage from "./HelpMessages/NarcosisHelpMessage";
 
 const OxygenPartialPressure = () => {
   const { appData } = useContext(AppContext);
+
+  const { dangerColor, safeColor } = useThemeColors();
 
   const { tankGases, appSettings } = appData;
 
@@ -89,29 +93,7 @@ const OxygenPartialPressure = () => {
           title="Oxygen Safe zones with PPO2"
           dangerIcon={DeathIcon}
           editParameterUnit="ATM"
-          HelpMessage={
-            <div>
-              <h3>Target PP02</h3>
-              <p>
-                Use the slider to select your highest acceptable oxygen partial
-                pressure.
-              </p>
-              <p>
-                You can go up to 1.8 ATM in this app, but this value should
-                generally not be higher than 1.4 ATM for "active" bottom phases,
-                and 1.6 ATM for static phases like decompression stops.
-              </p>
-              <p>
-                This value will impact the depth at which a specific mix can be
-                used. The higher the PPO2 target, the deeper the gas can take
-                you
-              </p>
-              <p>
-                Beyond those limits, oxygen toxicity can occur, leading to
-                potential strokes, loss of consciousness and death by drowning.
-              </p>
-            </div>
-          }
+          HelpMessage={<ToxicityHelpMessage />}
           editParameterComponent={MaxPPO2Editor}
         />
 
@@ -121,42 +103,17 @@ const OxygenPartialPressure = () => {
           editParameterUnit="m"
           title={`Narcosis Safe zones with END`}
           dangerIcon={NarcosisIcon}
-          HelpMessage={
-            <div>
-              <h3>Target END</h3>
-              <p>
-                Use the Slider to select your target maximum Equivalent Narcotic
-                Depth
-              </p>
-              <p>
-                This Value is very specific to each diver. You should select a
-                depth at which, on air, you don't get the effects of nitrogen
-                narcosis.
-              </p>
-              <p>
-                The higher the Equivalent Narcotic Depth, the deeper a specific
-                mix can take you safely
-              </p>
-              <p>
-                For a specific dive at a given depth, if you accept a deeper
-                END, then you can use a mix with less Helium and more Nitrogen
-              </p>
-              <p>
-                This app lets you choose wether or not you want to consider
-                oxygen narcotic.
-              </p>
-            </div>
-          }
+          HelpMessage={<NarcosisHelpMessage />}
           editParameterComponent={EquivalentNarcosisDepthEditor} //onChangeValue={handleChangeEND}
         />
       </S.BarGraphsContainer>
       <S.PPO2ENDSection>
         <S.SectionTitle>
           <S.TitleLabelContainer>
-            <S.ColorLetter>PP02</S.ColorLetter> and{" "}
-            <S.ColorLetter>E</S.ColorLetter>quivalent{" "}
-            <S.ColorLetter>N</S.ColorLetter>arcotic{" "}
-            <S.ColorLetter>D</S.ColorLetter>epth 0-100m
+            <S.ColorLetter color={dangerColor}>PP02</S.ColorLetter> and{" "}
+            <S.ColorLetter color={dangerColor}>E</S.ColorLetter>quivalent{" "}
+            <S.ColorLetter color={dangerColor}>N</S.ColorLetter>arcotic{" "}
+            <S.ColorLetter color={dangerColor}>D</S.ColorLetter>epth 0-100m
           </S.TitleLabelContainer>
         </S.SectionTitle>
         <S.PPO2ENDTable>

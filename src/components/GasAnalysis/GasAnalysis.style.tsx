@@ -133,6 +133,7 @@ export const StandardTableCell = styled.div<{
   color?: string;
   backgroundColor?: string;
 }>`
+  transition: background 1s;
   display: flex;
   justify-content: space-between;
   color: #ffffff;
@@ -241,8 +242,9 @@ export const DepthValue = styled.div`
   }
 `;
 
-export const ColorLetter = styled.span`
-  color: #ff9a1f;
+export const ColorLetter = styled.span<{ color: string }>`
+  color: ${(props) => props.color};
+  transition: color 1s;
 `;
 
 export const TitleLabelContainer = styled.div`

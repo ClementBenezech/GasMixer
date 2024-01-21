@@ -1,27 +1,28 @@
-import { dangerColor, safeColor } from "../utils/constants";
+import { Theme } from "../utils/constants";
 import { Zones } from "./types";
 
 export const getPPO2ZOnes = (
   shallowestSafeOperatingDepth: number,
-  deepestSafeOperatingDepth: number
+  deepestSafeOperatingDepth: number,
+  theme: Theme
 ): Zones => {
   return [
     {
       start: 0,
       end: shallowestSafeOperatingDepth,
-      color: dangerColor,
+      color: theme.dangerColor,
       danger: true,
       dangerLabel: "Hypoxia",
     },
     {
       start: shallowestSafeOperatingDepth,
       end: deepestSafeOperatingDepth,
-      color: safeColor,
+      color: theme.safeColor,
     },
     {
       start: deepestSafeOperatingDepth,
       end: 300,
-      color: dangerColor,
+      color: theme.dangerColor,
       danger: true,
       dangerLabel: "Toxicity",
     },
@@ -30,7 +31,8 @@ export const getPPO2ZOnes = (
 
 export const getNarcosisZones = (
   currentGasNarcoticGasPercentage: number,
-  maxNarcosisDepth: number
+  maxNarcosisDepth: number,
+  theme: Theme
 ) => {
   return [
     {
@@ -39,7 +41,7 @@ export const getNarcosisZones = (
         currentGasNarcoticGasPercentage > 0 && maxNarcosisDepth < 300
           ? maxNarcosisDepth
           : 300,
-      color: safeColor,
+      color: theme.safeColor,
     },
     {
       start:
@@ -47,7 +49,7 @@ export const getNarcosisZones = (
           ? maxNarcosisDepth
           : 300,
       end: 300,
-      color: dangerColor,
+      color: theme.dangerColor,
       danger: true,
       dangerLabel: "Narcosis",
     },

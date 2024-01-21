@@ -60,7 +60,7 @@ export const TankAndSliderContainer = styled.div`
 
 export const SlidersContainer = styled.div`
   display: flex;
-  height: 22vh;
+  height: min-content;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -102,8 +102,15 @@ export const AppTitleContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: min-content;
   box-sizing: border-box;
+  & > i {
+    font-size: 4vh;
+    margin-left: 2vw;
+    @media only screen and (max-width: 1024px) {
+      font-size: 2vh;
+    }
+  }
   @media only screen and (max-width: 1024px) {
     padding: 0.5vh 3vw;
   }
@@ -113,6 +120,7 @@ export const AppTitle = styled.div<{ color?: string }>`
   color: ${(props) => props.color ?? "white"};
   height: min-content;
   font-size: 3vw;
+  transition: color 1s;
   @media only screen and (max-width: 1024px) {
     font-size: 2vh;
   }
@@ -123,6 +131,7 @@ export const AppTitle = styled.div<{ color?: string }>`
 
 export const Disclaimer = styled.div<{ color?: string }>`
   font-size: 0.8vw;
+  margin: 0 1vw;
   height: 30%;
   color: ${(props) => props.color ?? "white"};
   @media only screen and (max-width: 1024px) {
@@ -135,11 +144,13 @@ export const Disclaimer = styled.div<{ color?: string }>`
 
 export const AppInfo = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
   border-radius: 1vh;
-  padding: 0.3vh;
+  padding: 1vh;
   width: 100%;
+  justify-content: center;
+  height: min-content;
 `;
 
 export const DiveTankContainer = styled.div`
@@ -150,7 +161,7 @@ export const DiveTankContainer = styled.div`
   }
 `;
 export const GasMixerSlider = styled.input`
-  cursor: pointer !important;
+  width: 100%;
   &::-ms-track {
     width: 100%;
     cursor: pointer;
@@ -175,5 +186,15 @@ export const NarcoticOxygenContainer = styled.div`
   }
   & > input {
     width: 10%;
+  }
+`;
+
+export const TitleAndThemeContainer = styled.div`
+  width: 100%;
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media only screen and (max-width: 1024px) {
   }
 `;

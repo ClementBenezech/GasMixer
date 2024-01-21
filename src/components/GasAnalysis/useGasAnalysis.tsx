@@ -5,10 +5,12 @@ import {
 } from "../utils/functions";
 import { AppContext } from "../../AppContext";
 import { getNarcosisZones, getPPO2ZOnes } from "./functions";
+import useThemeColors from "../utils/hooks/useThemeColors";
 
 const useGasAnalysis = () => {
   const { appData } = useContext(AppContext);
   const { tankGases, appSettings } = appData;
+  const theme = useThemeColors();
   const isOxygenNarcotic = appData.appSettings.isOxygenNarcotic;
   const NarcoticGasPercentageInMix = isOxygenNarcotic
     ? tankGases.oxygen.percentage + tankGases.nitrogen.percentage
@@ -29,7 +31,8 @@ const useGasAnalysis = () => {
 
   const PPO2zones = getPPO2ZOnes(
     shallowestSafeOperatingDepth,
-    deepestSafeOperatingDepth
+    deepestSafeOperatingDepth,
+    theme
   );
 
   const maxNarcosisDepth = Math.round(
@@ -43,7 +46,8 @@ const useGasAnalysis = () => {
 
   const NarcosisZones = getNarcosisZones(
     NarcoticGasPercentageInMix,
-    maxNarcosisDepth
+    maxNarcosisDepth,
+    theme
   );
 
   return {

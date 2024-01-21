@@ -17,6 +17,7 @@ export type AppSettings = {
     label: string;
     shortLabel: string;
   };
+  theme: string;
 };
 
 export type DataContext = {
@@ -41,6 +42,7 @@ const defaultAppSettings: AppSettings = {
     label: "meters",
     shortLabel: "m",
   },
+  theme: "greenRed",
 };
 
 // Generating initial context with initial gases

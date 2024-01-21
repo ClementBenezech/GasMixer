@@ -66,17 +66,20 @@ export const getTankGases = ({
   return {
     nitrogen: {
       percentage: nitrogen,
-      color: "linear-gradient(180deg, rgba(255,255,255,0) 0%, #0fa7f4 60%)",
+      color:
+        "repeating-linear-gradient(45deg, #2c9bf5 10px, #1c86ff 10px, #1c86ff 20px, #2c9bf5 20px, #2c9bf5 30px, #1c86ff 30px, #1c86ff 40px)",
       name: "Nitrogen",
     },
     oxygen: {
       percentage: oxygen,
-      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #d30051 60%)",
+      color:
+        "repeating-linear-gradient(135deg, #f52c54 10px, #c71c58 10px, #c71c58 20px, #f52c54 20px, #f52c54 30px, #c71c58 30px, #c71c58 40px);",
       name: "Oxygen",
     },
     helium: {
       percentage: helium,
-      color: "linear-gradient(0deg, rgba(255,255,255,0) 0%, #00d378 60%)",
+      color:
+        "repeating-linear-gradient(45deg, #54f52c 10px, #1cc783 10px, #1cc783 20px, #54f52c 20px, #54f52c 30px, #1cc783 30px, #1cc783 40px)",
       name: "Helium",
     },
   };

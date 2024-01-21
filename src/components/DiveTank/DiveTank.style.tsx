@@ -22,7 +22,7 @@ export const TankContainer = styled.div`
 export const ValveOutline = styled.div`
   height: 2vw;
   width: 1.5vw;
-  border: 6px solid white;
+  border: 0.3vw solid white;
   border-radius: 10%;
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ export const TankOutline = styled.div`
   border-radius: 20% 20% 10% 10%;
   height: 45vh;
   width: 100%;
-  border: 0.5vw solid white;
+  border: 0.3vw solid white;
   background-color: #9d9d9d;
   box-sizing: border-box;
   overflow: hidden;
@@ -108,4 +108,10 @@ export const GasName = styled.div<{ percentage?: number; gasColor?: string }>`
   @media only screen and (max-width: 1024px) {
     font-size: 3vw;
   }
+`;
+
+export const GasPercentage = styled.div`
+  background: #00000078;
+  border-radius: 1vh;
+  padding: 0 0.5vw;
 `;

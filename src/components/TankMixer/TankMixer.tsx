@@ -5,7 +5,11 @@ import * as S from "./TankMixer.style";
 import { getTankGases } from "../utils/functions";
 import { useEffect, useState } from "react";
 import { AppContext, DataContext, defaultContext } from "../../AppContext";
-import { dangerColor } from "../utils/constants";
+import ThemeSelector from "../ThemeSelector/ThemeSelector";
+
+import { themes } from "../utils/constants";
+import ModalContainer from "../ModalContainer/ModalContainer";
+import GlobalHelpMessage from "./HelpMessages/GlobalHelpMessage";
 
 const TankMixer = () => {
   const [appData, setAppData] = useState(defaultContext);
@@ -49,6 +53,15 @@ const TankMixer = () => {
     });
   }, [heliumSliderState.value, oxygenSliderState.value, appData.appSettings]);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModalVisible = () => {
+    if (showModal) {
+      setShowModal(false);
+    }
+    setShowModal(true);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -57,6 +70,18 @@ const TankMixer = () => {
       }}
     >
       <S.GlobalContainer>
+        <S.AppInfo>
+          <S.Disclaimer>{`For education only.`}</S.Disclaimer>
+          <S.Disclaimer
+            color={themes[appData.appSettings.theme].dangerColor}
+          >{`DO NOT USE to plan dives!`}</S.Disclaimer>
+          <S.Disclaimer>
+            © Clement Benezech 2024{" "}
+            <a href="mailto:clement.benezech@gmail.com">
+              <i className="fa-regular fa-envelope"></i>
+            </a>{" "}
+          </S.Disclaimer>
+        </S.AppInfo>
         <S.TankMixerContainer>
           <S.TankAndSliderContainer>
             <S.SlidersContainer>
@@ -91,27 +116,28 @@ const TankMixer = () => {
           </S.TankAndSliderContainer>
         </S.TankMixerContainer>
         <GasAnalysis />
-        <S.AppTitleContainer>
-          <S.AppTitle color="White">
-            <i className="fa-solid fa-screwdriver-wrench"></i>
-          </S.AppTitle>
-          <S.AppTitle color={dangerColor}>{`Gas`}</S.AppTitle>
-          <S.AppTitle color="White">{`Crafter`}</S.AppTitle>
-
-          <S.AppInfo>
-            <S.Disclaimer>{`For education only.`}</S.Disclaimer>
-            <S.Disclaimer
-              color={dangerColor}
-            >{`DO NOT USE to plan dives!`}</S.Disclaimer>
-            <S.Disclaimer>
-              © Clement Benezech 2024{" "}
-              <a href="mailto:clement.benezech@gmail.com">
-                <i className="fa-regular fa-envelope"></i>
-              </a>{" "}
-            </S.Disclaimer>
-          </S.AppInfo>
-        </S.AppTitleContainer>
+        <S.TitleAndThemeContainer>
+          <S.AppTitleContainer>
+            <S.AppTitle color="White">
+              <i className="fa-solid fa-screwdriver-wrench"></i>
+            </S.AppTitle>
+            <S.AppTitle
+              color={themes[appData.appSettings.theme].dangerColor}
+            >{`Gas`}</S.AppTitle>
+            <S.AppTitle color="White">{`Scanner`}</S.AppTitle>
+            <i
+              className="fa-solid fa-circle-info"
+              onClick={toggleModalVisible}
+            ></i>
+          </S.AppTitleContainer>
+          <ThemeSelector></ThemeSelector>
+        </S.TitleAndThemeContainer>
       </S.GlobalContainer>
+      {showModal && (
+        <ModalContainer onClose={() => setShowModal(false)}>
+          <GlobalHelpMessage></GlobalHelpMessage>
+        </ModalContainer>
+      )}
     </AppContext.Provider>
   );
 };

@@ -11,7 +11,7 @@ const DiveTank = () => {
     return gas.percentage > 0 ? (
       <S.GasPercentageBar percentage={gas.percentage} gasColor={gas.color}>
         <S.GasPercentageAmount>
-          <div>{`${gas.percentage}%`}</div>
+          <S.GasPercentage>{`${gas.percentage}%`}</S.GasPercentage>
           <S.GasName>{gas.name}</S.GasName>
         </S.GasPercentageAmount>
       </S.GasPercentageBar>

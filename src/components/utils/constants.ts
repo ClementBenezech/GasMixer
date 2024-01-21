@@ -7,5 +7,29 @@ export const nitrogenColor = "#00a0db";
 /* export const dangerColor = "#ed5418";
 export const safeColor = "#24a412"; */
 
-export const dangerColor = "#ee9d00";
-export const safeColor = "#06b4c6";
+export const dangerColor = "#ff21d2";
+export const safeColor = "#0087ff";
+
+export type Theme = {
+  dangerColor: string;
+  safeColor: string;
+};
+
+export type Themes = {
+  [key: string]: Theme;
+};
+
+export const themes: Themes = {
+  bluePink: {
+    dangerColor: "#ff21d2",
+    safeColor: "#0087ff",
+  },
+  greenRed: {
+    dangerColor: "#ed5418",
+    safeColor: "#24a412",
+  },
+  blueOrange: {
+    dangerColor: "rgb(238, 157, 0)",
+    safeColor: "rgb(6, 180, 198)",
+  },
+};

@@ -18,7 +18,7 @@ const Content = styled.div`
   background: white;
   color: black;
   height: min-content;
-  width: 60vw;
+  width: 80vw;
   padding: 2vh 2vw;
   font-family: "Roboto";
   border-radius: 1vw;

@@ -73,6 +73,7 @@ export const Bar = styled.div<{
   width?: string;
 }>`
   height: 80%;
+  transition: background 1s;
   width: ${(props) => props.width}%;
   max-width: ${(props) => props.width}%;
   background: ${(props) => props.color ?? "red"};
@@ -159,10 +160,10 @@ export const ParameterValueAndUnit = styled.div`
 `;
 
 export const ParameterValue = styled.div`
-  background: orange;
+  background: #080808;
   width: 100%;
   text-align: center;
-  padding: 0 0.5vh;
+  padding: 0 0.8vh;
   font-size: 1vw;
   @media only screen and (max-width: 1024px) {
     font-size: 1.7vh;
