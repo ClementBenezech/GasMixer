@@ -32,4 +32,8 @@ export const themes: Themes = {
     dangerColor: "rgb(238, 157, 0)",
     safeColor: "rgb(6, 180, 198)",
   },
+  royalBlueBloodRed: {
+    dangerColor: "    rgb(223, 18, 18)",
+    safeColor: "rgb(18, 110, 253)",
+  },
 };
