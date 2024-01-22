@@ -18,10 +18,13 @@ const Content = styled.div`
   background: white;
   color: black;
   height: min-content;
-  width: 80vw;
+  width: 50vw;
   padding: 2vh 2vw;
   font-family: "Roboto";
-  border-radius: 1vw;
+  border-radius: 0.5vh;
+  @media only screen and (max-width: 1024px) {
+    width: 80vw;
+  }
 `;
 
 export const ModalContainer = ({

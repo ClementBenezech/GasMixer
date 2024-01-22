@@ -1,4 +1,7 @@
+import { AppSettings } from "../../AppContext";
+import { TankGases } from "../TankMixer/types";
 import { Theme } from "../utils/constants";
+import { getEquivalentNarcosisDepthForDepth } from "../utils/functions";
 import { Zones } from "./types";
 
 export const getPPO2ZOnes = (
@@ -54,4 +57,39 @@ export const getNarcosisZones = (
       dangerLabel: "Narcosis",
     },
   ];
+};
+
+export const getGasAnalysisForDepth = ({
+  depth,
+  appSettings,
+  tankGases,
+}: {
+  depth: number;
+  appSettings: AppSettings;
+  tankGases: TankGases;
+}) => {
+  const oxygenPartialPressure =
+    Math.round(tankGases.oxygen.percentage * (depth / 10 + 1)) / 100;
+  const equivalentNarcoticDepth = getEquivalentNarcosisDepthForDepth(
+    depth,
+    tankGases.nitrogen.percentage,
+    tankGases.oxygen.percentage,
+    appSettings.isOxygenNarcotic
+  );
+
+  //Assessing if gas is safe
+  const isPartialPressureSafe =
+    oxygenPartialPressure >= appSettings.lowestOxygenPartialPressure &&
+    oxygenPartialPressure <= appSettings.highestOxygenPartialPressure;
+  const isDepthNarcotic =
+    equivalentNarcoticDepth > appSettings.equivalentNarcoticDepth;
+  const isGasMixSafe = !isDepthNarcotic && isPartialPressureSafe;
+
+  return {
+    equivalentNarcoticDepth,
+    isPartialPressureSafe,
+    isDepthNarcotic,
+    isGasMixSafe,
+    oxygenPartialPressure,
+  };
 };

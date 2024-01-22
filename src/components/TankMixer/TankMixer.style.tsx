@@ -139,6 +139,10 @@ export const Disclaimer = styled.div<{ color?: string }>`
   }
   & > a {
     color: #eaff00;
+    & > i {
+      font-size: 1.5vh;
+      margin-left: 2vw;
+    }
   }
 `;
 

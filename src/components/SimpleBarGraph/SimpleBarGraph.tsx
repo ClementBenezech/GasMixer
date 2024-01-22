@@ -12,9 +12,15 @@ const SimpleBarGraph = ({
   HelpMessage,
   ...restProps
 }: SimpleBarGraphProps) => {
+  const xAxisBoundaries = {
+    min: 0,
+    max: 300,
+    unit: "m",
+  };
   const RenderedBars = zones.map((zone) => {
     const barWidth = zone.end - zone.start;
-    const shouldBarBeDisplayed = zone.end > 0 && zone.start < 300;
+    const shouldBarBeDisplayed =
+      zone.end > 0 && zone.start < xAxisBoundaries.max;
     const lowestBarWidthToShowIcon = 20;
     const lowestBarWidthToShowLabel = 100;
     return shouldBarBeDisplayed ? (
@@ -62,8 +68,8 @@ const SimpleBarGraph = ({
           ></i>
         </S.BarChartTitle>
         <S.ScaleContainer>
-          <div>0 m</div>
-          <div>300 m</div>
+          <div>{`${xAxisBoundaries.min} ${xAxisBoundaries.unit}`}</div>
+          <div>{`${xAxisBoundaries.max} ${xAxisBoundaries.unit}`}</div>
         </S.ScaleContainer>
         <S.BarChartBarContainer>{RenderedBars}</S.BarChartBarContainer>
       </S.BarChartContainer>

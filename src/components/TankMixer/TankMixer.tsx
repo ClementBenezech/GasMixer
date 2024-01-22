@@ -99,7 +99,6 @@ const TankMixer = () => {
                       ...appData.appSettings,
                       isOxygenNarcotic: e.currentTarget.checked,
                     };
-                    console.log(newSettings);
                     const newContext = { ...appData, appSettings: newSettings };
                     setAppData(newContext);
                   }}
@@ -119,14 +118,15 @@ const TankMixer = () => {
         <S.TitleAndThemeContainer>
           <S.AppTitleContainer>
             <S.AppTitle color="White">
-              <i className="fa-solid fa-screwdriver-wrench"></i>
+              <i className="fa-solid fa-flask-vial"></i>
             </S.AppTitle>
             <S.AppTitle
               color={themes[appData.appSettings.theme].dangerColor}
-            >{`Gas`}</S.AppTitle>
-            <S.AppTitle color="White">{`Scanner`}</S.AppTitle>
+            >{`Dr.`}</S.AppTitle>
+            <S.AppTitle color="White">{`Blender`}</S.AppTitle>
             <i
-              className="fa-solid fa-circle-info"
+              style={{ color: themes[appData.appSettings.theme].dangerColor }}
+              className="fa-solid fa-warning"
               onClick={toggleModalVisible}
             ></i>
           </S.AppTitleContainer>

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import SimpleBarGraph from "../SimpleBarGraph/SimpleBarGraph";
 
-import { getEquivalentNarcosisDepthForDepth } from "../utils/functions";
 import * as S from "./GasAnalysis.style";
 import { AppContext } from "../../AppContext";
 import useGasAnalysis from "./useGasAnalysis";
@@ -9,6 +8,7 @@ import useEditParametersComponentsProps from "./useEditParametersComponentsProps
 import useThemeColors from "../utils/hooks/useThemeColors";
 import ToxicityHelpMessage from "./HelpMessages/ToxicityHelpMessage";
 import NarcosisHelpMessage from "./HelpMessages/NarcosisHelpMessage";
+import { getGasAnalysisForDepth } from "./functions";
 
 const OxygenPartialPressure = () => {
   const { appData } = useContext(AppContext);
@@ -22,29 +22,18 @@ const OxygenPartialPressure = () => {
   const depthArray = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
   const NarcosisIcon = <i className="fa-solid fa-face-dizzy"></i>;
-
   const DeathIcon = <i className="fa-solid fa-ghost"></i>;
   const checkIcon = <i className="fa-solid fa-check"></i>;
   const magnifierIcon = <i className="fa-solid fa-magnifying-glass-chart"></i>;
 
   const RenderedPP02Array = depthArray.map((depth) => {
-    const oxygenPartialPressure =
-      Math.round(tankGases.oxygen.percentage * (depth / 10 + 1)) / 100;
-
-    const equivalentNarcoticDepth = getEquivalentNarcosisDepthForDepth(
-      depth,
-      tankGases.nitrogen.percentage,
-      tankGases.oxygen.percentage,
-      appData.appSettings.isOxygenNarcotic
-    );
-
-    //Assessing if gas is safe
-    const isPartialPressureSafe =
-      oxygenPartialPressure >= appSettings.lowestOxygenPartialPressure &&
-      oxygenPartialPressure <= appSettings.highestOxygenPartialPressure;
-    const isDepthNarcotic =
-      equivalentNarcoticDepth > appSettings.equivalentNarcoticDepth;
-    const isGasMixSafe = !isDepthNarcotic && isPartialPressureSafe;
+    const {
+      equivalentNarcoticDepth,
+      isPartialPressureSafe,
+      isDepthNarcotic,
+      isGasMixSafe,
+      oxygenPartialPressure,
+    } = getGasAnalysisForDepth({ depth, appSettings, tankGases });
 
     const CellColors = {
       PPN2: isDepthNarcotic ? dangerColor : safeColor,
@@ -121,7 +110,6 @@ const OxygenPartialPressure = () => {
           {RenderedPP02Array}
         </S.PPO2ENDTable>
       </S.PPO2ENDSection>
-      {/* <MODcomponent OxygenPercentage={oxygenPercentage} /> */}
     </>
   );
 };

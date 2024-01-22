@@ -20,7 +20,6 @@ const useEditParametersComponentsProps = () => {
     max: 120,
     type: "range",
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.value);
       const newSettings = {
         ...appData.appSettings,
         equivalentNarcoticDepth: parseInt(e.target.value),

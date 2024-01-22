@@ -62,7 +62,6 @@ export const getTankGases = ({
   nitrogen: number;
   helium: number;
 }) => {
-  console.log(oxygen);
   return {
     nitrogen: {
       percentage: nitrogen,

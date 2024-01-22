@@ -20,8 +20,6 @@ export const useSlider = ({
   const [state, setState] = useState(defaultState);
   const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target && e.target.value) {
-      console.log("setting level", e.target.value);
-      //setslide(e.target.value);
       setState(parseInt(e.target.value));
     }
   };

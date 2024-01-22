@@ -5,9 +5,13 @@ const GlobalHelpMessage = () => {
 
   return (
     <div style={{ textAlign: "justify" }}>
-      <h3 style={{ color: dangerColor }}>GasScanner</h3>
+      <h3 style={{ color: dangerColor }}>
+        <i className="fa-solid fa-circle-exclamation"></i>
+        {"  "}Disclaimer
+      </h3>
       <p style={{ color: dangerColor }}>
-        Disclaimer: I am not a tech diver. I'm just a recreational divemaster.
+        I am not a tech diver (also just to clear any ambiguities: NOT a
+        doctor). I'm just a recreational divemaster with limited experience.
         Therefore, and also because I'm only human, this app may contain errors.
         It's meant as an educational tool to demonstrate some of the concepts
         behind gas blending. DO NOT use it for real life dive planning.
@@ -25,7 +29,7 @@ const GlobalHelpMessage = () => {
       <p>
         You can also alter the maximum oxygen partial pressure you accept
         (default being 1.4 ATM), and your own target Equivalent Narcotic Depth.
-        Play around. Find your gas.
+        Enjoy :)
       </p>
     </div>
   );
