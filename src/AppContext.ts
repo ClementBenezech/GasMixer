@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { getTankGases } from "./components/utils/functions";
 import { TankGases } from "./components/TankMixer/types";
+import { themes } from "./components/utils/constants";
 
 export type GasPercentages = {
   oxygen: number;
@@ -42,7 +43,10 @@ const defaultAppSettings: AppSettings = {
     label: "meters",
     shortLabel: "m",
   },
-  theme: "greenRed",
+  theme:
+    Object.keys(themes)[
+      Math.floor(Math.random() * (Object.keys(themes).length + 1))
+    ],
 };
 
 // Generating initial context with initial gases

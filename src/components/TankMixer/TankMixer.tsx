@@ -10,6 +10,7 @@ import ThemeSelector from "../ThemeSelector/ThemeSelector";
 import { themes } from "../utils/constants";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import GlobalHelpMessage from "./HelpMessages/GlobalHelpMessage";
+import Disclaimer from "./HelpMessages/Disclaimer";
 
 const TankMixer = () => {
   const [appData, setAppData] = useState(defaultContext);
@@ -53,14 +54,16 @@ const TankMixer = () => {
     });
   }, [heliumSliderState.value, oxygenSliderState.value, appData.appSettings]);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
 
-  const toggleModalVisible = () => {
-    if (showModal) {
-      setShowModal(false);
+  const toggleHelpModalVisible = () => {
+    if (showHelpModal) {
+      setShowHelpModal(false);
     }
-    setShowModal(true);
+    setShowHelpModal(true);
   };
+
+  const [showDisclaimerModal, setShowDisclaimerModal] = useState(true);
 
   return (
     <AppContext.Provider
@@ -127,15 +130,23 @@ const TankMixer = () => {
             <i
               style={{ color: themes[appData.appSettings.theme].dangerColor }}
               className="fa-solid fa-warning"
-              onClick={toggleModalVisible}
+              onClick={toggleHelpModalVisible}
             ></i>
           </S.AppTitleContainer>
           <ThemeSelector></ThemeSelector>
         </S.TitleAndThemeContainer>
       </S.GlobalContainer>
-      {showModal && (
-        <ModalContainer onClose={() => setShowModal(false)}>
-          <GlobalHelpMessage></GlobalHelpMessage>
+      {showHelpModal && (
+        <ModalContainer onClose={() => setShowHelpModal(false)}>
+          <GlobalHelpMessage />
+        </ModalContainer>
+      )}
+      {showDisclaimerModal && (
+        <ModalContainer
+          onClose={() => setShowDisclaimerModal(false)}
+          closeButtonLabel={"I understand, let me use the app!"}
+        >
+          <Disclaimer />
         </ModalContainer>
       )}
     </AppContext.Provider>

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+import useThemeColors from "../utils/hooks/useThemeColors";
 
 const ContainerOverlay = styled.div`
   position: fixed;
@@ -14,7 +15,7 @@ const ContainerOverlay = styled.div`
   align-items: center;
   z-index: 9;
 `;
-const Content = styled.div`
+const Content = styled.div<{ buttonColor?: string }>`
   background: white;
   color: black;
   height: min-content;
@@ -25,16 +26,29 @@ const Content = styled.div`
   @media only screen and (max-width: 1024px) {
     width: 80vw;
   }
+  & > button {
+    background-color: ${(props) => props.buttonColor};
+  }
 `;
 
 export const ModalContainer = ({
   children,
   onClose,
+  closeButtonLabel,
 }: {
   children: ReactNode;
   onClose: () => void;
+  closeButtonLabel?: string;
 }) => {
-  return (
+  const { dangerColor } = useThemeColors();
+  return closeButtonLabel ? (
+    <ContainerOverlay>
+      <Content buttonColor={dangerColor}>
+        {children}
+        <button onClick={onClose}>{closeButtonLabel}</button>
+      </Content>
+    </ContainerOverlay>
+  ) : (
     <ContainerOverlay onClick={onClose}>
       <Content>{children}</Content>
     </ContainerOverlay>
